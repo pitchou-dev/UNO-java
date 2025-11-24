@@ -1,4 +1,5 @@
 public enum Actiontype {
-    CHANGE_COLOR,
-    DRAW_FOUR,
+    SKIP,
+    REVERSE,
+    DRAW_TWO,
 }
