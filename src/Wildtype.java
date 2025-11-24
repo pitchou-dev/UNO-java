@@ -1,4 +1,4 @@
-public enum wildtype {
+public enum Wildtype {
     CHANGE_COLOR,
     DRAW_FOUR,
 }
