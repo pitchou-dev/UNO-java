@@ -1,13 +1,18 @@
 public class Deck {
 
-    public List<Card> shuffle() {
+    private Card cards[];
+
+    public void shuffle() {
         // implementation
     };
-    public card drawCard() {
-        // implementation
+
+    public Card drawCard() {
+        //temporary:
+        return this.cards[0];
     };
-public boolean isEmpty() {
-        // implementation
+    public boolean isEmpty() {
+        //temporary:
+        return false;
     }
         
 }
