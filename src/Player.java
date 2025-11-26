@@ -17,7 +17,7 @@ public class Player{
         hand.addLast(deck.drawCard());
     }
     
-    public int getHand() {
+    public int getHandSize() {
         return hand.size();
     }
 
@@ -30,5 +30,6 @@ public class Player{
 }
                     //getter pour la main du joueur
                     //add say uno when 1 card left
+                    //play card method
 
 
