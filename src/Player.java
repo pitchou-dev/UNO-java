@@ -2,7 +2,7 @@ import java.util.LinkedList;
 public class Player{
 
     private String name;
-    LinkedList<Card> hand = new LinkedList<>();
+    private LinkedList<Card> hand = new LinkedList<>();
 
     public void setName(String name) {
         this.name = name;
