@@ -21,8 +21,14 @@ public class Player{
         return hand.size();
     }
 
+    public void displayHand() {   //i added this method to display the player's hand in Demo.java
+        System.out.println("Player " + name + " has the following cards in hand:");
+        for (Card card : hand) {
+            System.out.println(card);
 }
-
-
+    }
+}
+                    //getter pour la main du joueur
+                    //add say uno when 1 card left
 
 
