@@ -12,6 +12,6 @@ public class NumberCard extends Card {
 
     @Override
     public String toString() {
-        return "NumberCard{" +"color=" + getColor() +", value=" + value +'}';
+        return "[" +"" + getColor() +", " + value +']';
 }       // we override toString to display card info because it was showing the object reference by default
 }
