@@ -4,9 +4,14 @@ import java.util.Collections;
 public class Deck {
 
     private List<Card> cards;
+    
+    public Deck() {
+        initDeck();    //we needed to call initDeck in the constructor to initialize the deck
+    }
+
 
     public void initDeck() {
-        this.cards = new ArrayList<>();
+        this.cards = new ArrayList<>();        //we still need to add special cards in tp 3
         for (Color color : Color.values()) {
             
             if(color == Color.BLACK) {
