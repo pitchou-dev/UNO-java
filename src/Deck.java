@@ -36,5 +36,10 @@ public class Deck {
     public boolean isEmpty() {
         return this.cards.isEmpty();
     }
+
+    public void refillDeckAndShuffle(List<Card> discardedCards) {
+        this.cards.addAll(discardedCards);
+        this.shuffle();
+    }
         
 }
