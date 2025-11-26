@@ -1,6 +1,6 @@
 import java.util.List;
 import java.util.ArrayList;
-
+import java.util.Collections;
 public class Deck {
 
     private List<Card> cards;
@@ -26,7 +26,7 @@ public class Deck {
     }
 
     public void shuffle() {
-        // implementation
+        Collections.shuffle(this.cards);
     };
 
     public Card drawCard() {
