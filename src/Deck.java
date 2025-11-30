@@ -10,7 +10,7 @@ public class Deck {
     }
 
 
-    public void initDeck() {
+    private void initDeck() {
         this.cards = new ArrayList<>();        //we still need to add special cards in tp 3
         for (Color color : Color.values()) {
             
