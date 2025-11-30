@@ -3,7 +3,8 @@ public class Demo {
         Deck deck = new Deck();
         deck.shuffle();
         Player player1 = new Player();
-        player1.setName("Ahmed");
+        System.out.println("Enter player name: ");
+        player1.setName();
         player1.drawCard(deck);
         System.out.println(player1.getName() + " has " + player1.getHandSize() + " card(s) in hand.");
         player1.displayHand();

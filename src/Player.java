@@ -1,11 +1,13 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 public class Player{
 
     private String name;
     private ArrayList<Card> hand = new ArrayList<>();
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName() {
+        Scanner scan = new Scanner(System.in); 
+        this.name = scan.next();
     }
 
     public String getName() {
