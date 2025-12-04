@@ -13,7 +13,8 @@ public class Menu {
         switch (choice) {
             case 1:
                 System.out.println("Starting the game...");
-                // hnaya tbdaw l3b
+                Game game = new Game();
+                game.startGame();
                 break;
             case 2:
                 System.out.println("Exiting the game. Goodbye!");
