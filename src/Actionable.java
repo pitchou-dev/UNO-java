@@ -1,5 +1,5 @@
+
 public interface Actionable {
 
-    
-   public  abstract void Applyeffect(Game game);
+    public abstract void Applyeffect(Game game);
 }

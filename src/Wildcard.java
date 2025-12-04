@@ -1,56 +1,59 @@
+
 import java.util.Scanner;
-public class Wildcard extends Card implements Actionable   {
+
+public class Wildcard extends Card implements Actionable {
+
     private Wildtype wildcard;
+
     public Wildcard(Wildtype wildcard) {
         super(Color.BLACK);
-        this.wildcard=wildcard;
+        this.wildcard = wildcard;
 
-    
     }
-    public Color Chosencolor(){
+
+    public Color Chosencolor() {
         System.out.println("Choose a color:1-Red,2-Yellow,3-Blue,4-Green");
         Scanner scan = new Scanner(System.in);
-        int Choice= scan.nextInt();
+        int Choice = scan.nextInt();
         Color newcolor;
-        newcolor= Color.BLACK;
-    
-        switch(Choice){
+        newcolor = Color.BLACK;
+
+        switch (Choice) {
             case 1:
-                newcolor= Color.RED;
-                
-            break;
+                newcolor = Color.RED;
+
+                break;
             case 2:
-                newcolor= Color.YELLOW;
-            break;
+                newcolor = Color.YELLOW;
+                break;
             case 3:
-                newcolor=  Color.BLUE;
-            break;
+                newcolor = Color.BLUE;
+                break;
             case 4:
-                newcolor=  Color.GREEN;
-            break;
-            
+                newcolor = Color.GREEN;
+                break;
+
             default:
                 System.out.println("Invalid Choice, Try again");
 
                 Chosencolor();
-            break;
-
+                break;
 
         }
         return newcolor;
     }
+
     @Override
 
-    public void Applyeffect(Game game){
+    public void Applyeffect(Game game) {
         game.setcurrentColor(Chosencolor());
-        if( wildcard== Wildtype.DRAW_FOUR){
+        if (wildcard == Wildtype.DRAW_FOUR) {
             System.out.println("Next player draws four cards");
             game.nextPlayer();
-            for(int i=0;i<4;i++){
+            for (int i = 0; i < 4; i++) {
                 game.getPlayer(game.getcurrentPlayerIndex()).drawCard(game.getDeck());
-            } 
+            }
         }
     }
 
 }
-

@@ -1,4 +1,6 @@
+
 abstract public class Card {
+
     private Color color;
 
     public Card(Color color) {

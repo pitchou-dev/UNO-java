@@ -1,14 +1,15 @@
+
 public class Menu {
+
     java.util.Scanner scanner = new java.util.Scanner(System.in);
 
     private int getUserChoice() {
         return scanner.nextInt();
     }
-    
-    
+
     public Menu() {
-        System.out.println("1. Start Game\n" +
-                   "2. Exit");
+        System.out.println("1. Start Game\n"
+                + "2. Exit");
         int choice = this.getUserChoice();
         switch (choice) {
             case 1:
@@ -25,11 +26,10 @@ public class Menu {
                 break;
         }
     }
-    
-    
+
     public static void main(String[] args) {
         Menu menu = new Menu();
         menu.getUserChoice();
-        
+
     }
 }

@@ -1,4 +1,6 @@
+
 public class NumberCard extends Card {
+
     private int value;
 
     public NumberCard(Color color, int value) {
@@ -12,6 +14,6 @@ public class NumberCard extends Card {
 
     @Override
     public String toString() {
-        return "[" +"" + getColor() +", " + value +']';
-}       // we override toString to display card info because it was showing the object reference by default
+        return "[" + "" + getColor() + ", " + value + ']';
+    }       // we override toString to display card info because it was showing the object reference by default
 }

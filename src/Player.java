@@ -1,12 +1,14 @@
+
 import java.util.ArrayList;
 import java.util.Scanner;
-public class Player{
+
+public class Player {
 
     private String name;
     private ArrayList<Card> hand = new ArrayList<>();
 
     public void setName() {
-        Scanner scan = new Scanner(System.in); 
+        Scanner scan = new Scanner(System.in);
         this.name = scan.next();
     }
 
@@ -14,11 +16,11 @@ public class Player{
         return name;
     }
 
-    public void drawCard(Deck deck){
+    public void drawCard(Deck deck) {
         //la carte que le joueur tire est ajouté à son hand
         hand.addLast(deck.drawCard());
     }
-    
+
     public int getHandSize() {
         return hand.size();
     }
@@ -27,20 +29,20 @@ public class Player{
         System.out.println("Player " + name + " has the following cards in hand:");
         int i = 1;
         for (Card card : hand) {
-            
-            System.out.println(i +"."+ card);
+
+            System.out.println(i + "." + card);
             i++;
         }
-}
-    public Card playCard( int i) {
-        System.out.println(name + " played: " + hand.get(i-1));
+    }
 
-        return hand.remove(i-1);
+    public Card playCard(int i) {
+        System.out.println(name + " played: " + hand.get(i - 1));
+
+        return hand.remove(i - 1);
     }
 }
-                    //getter pour la main du joueur
-                    //add say uno when 1 card left
-                    //play card method and remove from hand
-                    //compare card with top card method
-                    
+//getter pour la main du joueur
+//add say uno when 1 card left
+//play card method and remove from hand
+//compare card with top card method
 
