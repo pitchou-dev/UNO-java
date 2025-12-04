@@ -15,7 +15,13 @@ public class Deck {
         for (Color color : Color.values()) {
             
             if(color == Color.BLACK) {
-                continue;
+                for(int i=0; i<4; i++) {
+                    Wildcard CHANGE_COLOR = new Wildcard(Wildtype.CHANGE_COLOR);
+                    this.cards.addLast(CHANGE_COLOR);
+                    
+                    Wildcard DRAW_FOUR = new Wildcard(Wildtype.DRAW_FOUR);
+                    this.cards.addLast(DRAW_FOUR);
+                }
             }
 
             NumberCard numberCard_0 = new NumberCard(color, 0);
@@ -26,6 +32,16 @@ public class Deck {
                 this.cards.addLast(numberCard);
                 NumberCard secondNumberCard = new NumberCard(color, i);
                 this.cards.addLast(secondNumberCard);
+            }
+            for (int i = 0; i < 2; i++) {
+                Actioncard skipCard = new Actioncard(color, Actiontype.SKIP);
+                this.cards.addLast(skipCard);
+                
+                Actioncard reverseCard = new Actioncard(color, Actiontype.REVERSE);
+                this.cards.addLast(reverseCard);
+                
+                Actioncard drawTwoCard = new Actioncard(color, Actiontype.DRAW_TWO);
+                this.cards.addLast(drawTwoCard);
             }
         }
     }
