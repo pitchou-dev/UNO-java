@@ -35,10 +35,17 @@ public class Player {
         }
     }
 
-    public Card playCard(int i) {
-        System.out.println(name + " played: " + hand.get(i - 1));
+    public Card playCard() {
+        int num;
+        do { 
+            System.out.println("Choose your card: ");
+            Scanner scan = new Scanner(System.in);
+            num = scan.nextInt();
+        } while (num > 0 && num <= hand.size());
 
-        return hand.remove(i - 1);
+        System.out.println(name + " played: " + hand.get(num-1));
+
+        return hand.remove(num-1);
     }
 
     public ArrayList<Card> getHand() {
