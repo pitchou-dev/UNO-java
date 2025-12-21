@@ -55,5 +55,10 @@ public class Wildcard extends Card implements Actionable {
             }
         }
     }
+    @Override
+    public boolean canBePlayedOn( Card topCard , Color currentColor) {
+        return true;    
+    }
+
 
 }

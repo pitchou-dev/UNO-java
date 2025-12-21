@@ -40,5 +40,17 @@ public class Actioncard extends Card implements Actionable {
     public void Applyeffect(Game game) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+    @Override
+    public boolean canBePlayedOn( Card topCard , Color currentColor) {
+        // t9der tl3b ida nafs color
+        if (this.getColor() == currentColor) {
+            return true;
+        } 
+        if (topCard instanceof Actioncard topActionCard) {
+            return this.action == topActionCard.action;   
+        }
+        return false;
+
+    }
 
 }
