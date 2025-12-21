@@ -43,6 +43,7 @@ public class Menu {
                         break;
                 }
                 System.out.println("Starting the game...");
+                int x = this.NumberofPlayers();
                 Game game = new Game(x);
                 game.startGame();
                 break;
