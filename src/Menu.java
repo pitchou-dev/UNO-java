@@ -33,6 +33,8 @@ public class Menu {
                         System.out.println("You chose to play with bots.");
                         int x = this.NumberofPlayers();
                         Game gameWithBots = new Game(x);
+                        gameWithBots.startGame();
+                        gameWithBots.play();
                         break;
                     case 2:
                         System.out.println("You chose to play without bots.");
@@ -46,6 +48,7 @@ public class Menu {
                 int x = this.NumberofPlayers();
                 Game game = new Game(x);
                 game.startGame();
+                game.play();
                 break;
             case 2:
                 System.out.println("Exiting the game. Goodbye!");
