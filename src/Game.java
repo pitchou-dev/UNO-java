@@ -12,7 +12,7 @@ public class Game {
     private Color currentColor;
     private int numPlayers;
 
-    public void Game(int numPlayers) {
+    public Game(int numPlayers) {
         this.numPlayers = numPlayers;
         this.deck = new Deck();
     }
@@ -91,21 +91,21 @@ public class Game {
             currentPlayer.displayHand();
 
             Card playedCard = null;
-            if (currentPlayer.CanPlayerPlay(this)) {
+            if (currentPlayer.CanPlayerPlay(topCard, currentColor)) {
                 //si le joueur a une carte jouable alors il doit choisir une des cartes jouables:
                 do {   
                     playedCard = currentPlayer.playCard();
-                } while (!playedCard.canBePlayedOn(topCard));
+                } while (!playedCard.canBePlayedOn(topCard, currentColor));
             } else {
                 //sinon il pioche une carte et si il peut jouer avec cette carte joue:
                 System.out.println("You dont have any playable card, drawing one..."); 
                 currentPlayer.drawCard(deck);
                 currentPlayer.displayHand();
                 
-                if(currentPlayer.CanPlayerPlay(this)) {
+                if(currentPlayer.CanPlayerPlay(topCard, currentColor)) {
                     do {   
                         playedCard = currentPlayer.playCard();
-                    } while (!playedCard.canBePlayedOn(topCard));
+                    } while (!playedCard.canBePlayedOn(topCard, currentColor));
                 }
             }
 

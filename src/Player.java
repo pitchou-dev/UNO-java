@@ -48,9 +48,9 @@ public class Player {
         return hand.remove(num-1);
     }
 
-    public boolean CanPlayerPlay(Game game) {
+    public boolean CanPlayerPlay(Card topCard, Color currentColor) {
         for (Card card : hand) {
-            if (card.canBePlayedOn(game)) {
+            if (card.canBePlayedOn(topCard, currentColor)) {
                 return true;
             }
         }
