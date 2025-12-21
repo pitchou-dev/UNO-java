@@ -18,6 +18,7 @@ public class Game {
             players.add(null); // Initialiser avec des valeurs nulles
         }
         this.numPlayers = numPlayers;
+        this.discardPile = new java.util.ArrayList<>();
         this.deck = new Deck();
     }
 
@@ -74,6 +75,8 @@ public class Game {
 
     public void startGame() {
         for (int i = 0; i < numPlayers; i++) {
+            System.out.println("Setting up Player " + (i + 1));
+            System.out.print("choose player name: ");
             players.set(i, new Player());
             players.get(i).setName();
         }
