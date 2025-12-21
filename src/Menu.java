@@ -6,15 +6,16 @@ public class Menu {
     private int getUserChoice() {
         return scanner.nextInt();
     }
-    public void NumberofPlayers() {
+    public int NumberofPlayers() {
         System.out.println("Enter number of players (2-4): ");
         int numPlayers = this.getUserChoice();
             if (numPlayers < 2 || numPlayers > 4) {
-            System.out.println("Invalid number of players. Please enter a number between 2 and 10.");
+            System.out.println("Invalid number of players. Please enter a number between 2 and 4.");
             this.NumberofPlayers();
         } else {
             System.out.println("You chose to play with " + numPlayers + " players.");
         }
+        return numPlayers;
     }
 
     public Menu() {
@@ -30,8 +31,8 @@ public class Menu {
                 switch (choiceBotsorNot) {
                     case 1:
                         System.out.println("You chose to play with bots.");
-                        this.NumberofPlayers();
-                        Game gameWithBots = new Game();
+                        int x = this.NumberofPlayers();
+                        Game gameWithBots = new Game(x);
                         break;
                     case 2:
                         System.out.println("You chose to play without bots.");
@@ -42,7 +43,7 @@ public class Menu {
                         break;
                 }
                 System.out.println("Starting the game...");
-                Game game = new Game();
+                Game game = new Game(x);
                 game.startGame();
                 break;
             case 2:
