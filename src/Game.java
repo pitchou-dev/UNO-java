@@ -20,6 +20,7 @@ public class Game {
         this.numPlayers = numPlayers;
         this.discardPile = new java.util.ArrayList<>();
         this.deck = new Deck();
+        this.deck.shuffle();
     }
 
     public void nextPlayer() {
@@ -92,6 +93,9 @@ public class Game {
         while(!gameOver) {
             Player currentPlayer = players.get(currentPlayerIndex);
             System.out.println("\n--- Turn of " + currentPlayer.getName() + " ---");
+            if(topCard instanceof Wildcard) {
+                System.out.println("Current color is : " + currentColor);
+            }
             System.out.println("Top card is : " + topCard);
             
             //si le joueur est humain les cartes s'afficheront sinon non (polymorphisme)
@@ -142,5 +146,8 @@ public class Game {
     }
 
 }
-
-
+//segem playedcard ki ma temchich pitchou sa7it 
+// ya pitchou rahou ykhelih yel3b w yna7ilo carta
+//printiw ki tskipiw wa7d
+//zido 9ololna wech drawina
+//say uno 
