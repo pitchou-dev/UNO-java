@@ -6,7 +6,7 @@ public class Game {
     private Deck deck;
     private List<Player> players;
     private List<Card> discardPile;
-    private int currentPlayerIndex;
+    private int currentPlayerIndex = 0;
     private int direction = 1;//La direction initiale est de 1
     private Card topCard;
     private Color currentColor;
@@ -19,7 +19,6 @@ public class Game {
 
     public void nextPlayer() {
         currentPlayerIndex = (currentPlayerIndex + direction + numPlayers) % numPlayers;
-
     }
 
     public int getcurrentPlayerIndex() {
@@ -70,13 +69,71 @@ public class Game {
     }
 
     public void startGame() {
+        for (int i = 0; i < numPlayers; i++) {
+            players.set(i, new Player());
+            players.get(i).setName();
+        }
         distributeCards();
         topCard = deck.drawCard();
         discardPile.add(topCard);
         currentColor = topCard.getColor();
     }
+    
+    public void play() {
+        boolean gameOver = false;
+
+        while(!gameOver) {
+            Player currentPlayer = players.get(currentPlayerIndex);
+            System.out.println("\n--- Turn of " + currentPlayer.getName() + " ---");
+            System.out.println("Top card is : " + topCard);
+            
+            //si le joueur est humain les cartes s'afficheront sinon non (polymorphisme)
+            currentPlayer.displayHand();
+
+            Card playedCard = null;
+            if (currentPlayer.CanPlayerPlay(this)) {
+                //si le joueur a une carte jouable alors il doit choisir une des cartes jouables:
+                do {   
+                    playedCard = currentPlayer.playCard();
+                } while (!playedCard.canBePlayedOn(topCard));
+            } else {
+                //sinon il pioche une carte et si il peut jouer avec cette carte joue:
+                System.out.println("You dont have any playable card, drawing one..."); 
+                currentPlayer.drawCard(deck);
+                currentPlayer.displayHand();
+                
+                if(currentPlayer.CanPlayerPlay(this)) {
+                    do {   
+                        playedCard = currentPlayer.playCard();
+                    } while (!playedCard.canBePlayedOn(topCard));
+                }
+            }
+
+            if (playedCard != null) {
+                topCard = playedCard;
+                discardPile.add(topCard);
+                currentColor = topCard.getColor(); //important pour les wildcard
+
+                //si la carte doit affecter le jeu on applique son effet:
+                if (playedCard instanceof Actionable actionable) {
+                    actionable.Applyeffect(this);
+                }
+
+                if (currentPlayer.getHand().isEmpty()) {
+                    System.out.println("Congratulation! " + currentPlayer.getName() + ", won !");
+                    gameOver = true;
+                }
+
+            } else {
+                System.out.println(currentPlayer.getName() + " drawed a card.");
+            }
+
+            if (!gameOver) {
+                nextPlayer();
+            }
+        }
+    }
 
 }
-//is playable interface 
-//fix deck to add other cards
+
 
