@@ -8,8 +8,11 @@ public class Actioncard extends Card implements Actionable {
         this.action = action;
 
     }
-
-    public void ApplyEffect(Game game) {
+    public Actiontype getaction(){
+      return this.action;
+    }
+     @Override
+    public void Applyeffect(Game game) {
         switch (action) {
             case SKIP:
                 System.out.println("Next player's turn is skipped");
@@ -36,10 +39,7 @@ public class Actioncard extends Card implements Actionable {
         }
     }
 
-    @Override
-    public void Applyeffect(Game game) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+  
     @Override
     public boolean canBePlayedOn( Card topCard , Color currentColor) {
         // t9der tl3b ida nafs color
@@ -52,5 +52,8 @@ public class Actioncard extends Card implements Actionable {
         return false;
 
     }
-
+     @Override
+    public String toString() {
+        return "[" +  getaction()+"," + getColor() + "]";
+    } 
 }
