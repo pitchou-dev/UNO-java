@@ -23,6 +23,7 @@ public class Deck {
                     Wildcard DRAW_FOUR = new Wildcard(Wildtype.DRAW_FOUR);
                     this.cards.addLast(DRAW_FOUR);
                 }
+                continue;
             }
 
             NumberCard numberCard_0 = new NumberCard(color, 0);
