@@ -13,6 +13,10 @@ public class Game {
     private int numPlayers;
 
     public Game(int numPlayers) {
+        this.players = new java.util.ArrayList<>(numPlayers);
+        for (int i = 0; i < numPlayers; i++) {
+            players.add(null); // Initialiser avec des valeurs nulles
+        }
         this.numPlayers = numPlayers;
         this.deck = new Deck();
     }
