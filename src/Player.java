@@ -48,6 +48,15 @@ public class Player {
         return hand.remove(num-1);
     }
 
+    public boolean CanPlayerPlay(Game game) {
+        for (Card card : hand) {
+            if (card.canBePlayedOn(game)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public ArrayList<Card> getHand() {
         return hand;
     }
