@@ -41,7 +41,7 @@ public class Player {
             System.out.println("Choose your card: ");
             Scanner scan = new Scanner(System.in);
             num = scan.nextInt();
-        } while (num > 0 && num <= hand.size());
+        } while (num <= 0 || num > hand.size());
 
         System.out.println(name + " played: " + hand.get(num-1));
 
