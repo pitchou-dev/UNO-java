@@ -17,6 +17,7 @@ public class Wildcard extends Card implements Actionable {
         System.out.println("Choose a color:1-Red,2-Yellow,3-Blue,4-Green");
         Scanner scan = new Scanner(System.in);
         int Choice = scan.nextInt();
+        scan.close();
         Color newcolor;
         newcolor = Color.BLACK;
 

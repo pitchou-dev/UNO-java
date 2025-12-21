@@ -10,6 +10,7 @@ public class Player {
     public void setName() {
         Scanner scan = new Scanner(System.in);
         this.name = scan.next();
+        scan.close();
     }
 
     public String getName() {
@@ -41,6 +42,7 @@ public class Player {
             System.out.println("Choose your card: ");
             Scanner scan = new Scanner(System.in);
             num = scan.nextInt();
+            scan.close();
         } while (num <= 0 || num > hand.size());
 
         System.out.println(name + " played: " + hand.get(num-1));
