@@ -52,10 +52,10 @@ public class Game {
     }
 
     public void discardtodraw(Deck deck) {
-        topCard = discardPile.remove(discardPile.size() - 1);
+        discardPile.removeLast(); // remove the top card from the discard pile 
         deck.refillDeckAndShuffle(discardPile);
         discardPile.clear();
-        discardPile.add(topCard);
+        discardPile.add(topCard); // add the top card to the discard pile again
     }
 
     public void distributeCards() {
@@ -122,6 +122,9 @@ public class Game {
                 //sinon il pioche une carte et si il peut jouer avec cette carte joue:
                 System.out.println("You dont have any playable card, drawing one..."); 
                 currentPlayer.drawCard(deck);
+                if (deck.isEmpty()) {
+                    discardtodraw(deck);
+                }
                 currentPlayer.displayHand();
                 
                 if(currentPlayer.CanPlayerPlay(topCard, currentColor)) {
