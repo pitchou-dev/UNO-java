@@ -10,7 +10,6 @@ public class Player {
     public void setName() {
         Scanner scan = new Scanner(System.in);
         this.name = scan.next();
-        scan.close();
     }
 
     public String getName() {
@@ -20,6 +19,11 @@ public class Player {
     public void drawCard(Deck deck) {
         //la carte que le joueur tire est ajouté à son hand
         hand.addLast(deck.drawCard());
+    }
+
+    //give the player his card back in case he play a wrong card
+    public void giveCardBack(Card card) {
+        hand.addLast(card);
     }
 
     public int getHandSize() {
@@ -42,7 +46,6 @@ public class Player {
             System.out.println("Choose your card: ");
             Scanner scan = new Scanner(System.in);
             num = scan.nextInt();
-            scan.close();
         } while (num <= 0 || num > hand.size());
 
         System.out.println(name + " played: " + hand.get(num-1));
