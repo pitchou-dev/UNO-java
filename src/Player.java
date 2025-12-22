@@ -67,11 +67,12 @@ public class Player {
             System.out.println(name + " says UNO!");
         }
     }
+   
+}
+
      /*  public boolean canPlayCard(Card topCard, Card cardToPlay) {
      return cardToPlay.getColor() == topCard.getColor() || cardToPlay.getValue() == topCard.getValue();
     }*/ 
-
-}
 //getter pour la main du joueur
 //add say uno when 1 card left
 //play card method and remove from hand

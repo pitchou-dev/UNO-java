@@ -1,8 +1,8 @@
-import java.util.Random;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Botplayer extends Player {
-    private int i=random(0,7);
+    private int i=random(0, super.getHandSize()-1);
     public int random(int min, int max) {
         Random rand = new Random();
         return rand.nextInt((max - min) + 1) + min;
@@ -10,6 +10,7 @@ public class Botplayer extends Player {
     @Override
     public void setName() {
         int y = 0;
+        y++;
         String botName = "BotPlayer" + y; 
     }
     public void drawCard(Deck deck) {
@@ -31,6 +32,12 @@ public class Botplayer extends Player {
     public ArrayList<Card> getHand() {
         return super.getHand();
     }
+    public boolean CanPlayerPlay(Card topCard, Color currentColor) {
+        return super.CanPlayerPlay(topCard, currentColor);
+    }
+    
+
+    
     
     
 }
