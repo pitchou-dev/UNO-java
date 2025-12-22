@@ -86,6 +86,19 @@ public class Game {
         discardPile.add(topCard);
         currentColor = topCard.getColor();
     }
+
+    private Card playerChoose(Player currentPlayer, Card topcard, Color currentColor) {
+        Card playedCard = currentPlayer.playCard();
+        if (!playedCard.canBePlayedOn(topcard, currentColor)) {
+            System.out.println("You can't play with that card.");
+            //give his card back: 
+            currentPlayer.giveCardBack(playedCard);
+            currentPlayer.displayHand();
+            return playerChoose(currentPlayer, topcard, currentColor);
+        } else {
+            return playedCard;
+        }
+    } 
     
     public void play() {
         boolean gameOver = false;
@@ -104,9 +117,7 @@ public class Game {
             Card playedCard = null;
             if (currentPlayer.CanPlayerPlay(topCard, currentColor)) {
                 //si le joueur a une carte jouable alors il doit choisir une des cartes jouables:
-                do {   
-                    playedCard = currentPlayer.playCard();
-                } while (!playedCard.canBePlayedOn(topCard, currentColor));
+                playedCard = playerChoose(currentPlayer, topCard, currentColor);
             } else {
                 //sinon il pioche une carte et si il peut jouer avec cette carte joue:
                 System.out.println("You dont have any playable card, drawing one..."); 
@@ -114,9 +125,7 @@ public class Game {
                 currentPlayer.displayHand();
                 
                 if(currentPlayer.CanPlayerPlay(topCard, currentColor)) {
-                    do {   
-                        playedCard = currentPlayer.playCard();
-                    } while (!playedCard.canBePlayedOn(topCard, currentColor));
+                    playedCard = playerChoose(currentPlayer, topCard, currentColor);
                 }
             }
 

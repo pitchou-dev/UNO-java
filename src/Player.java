@@ -21,6 +21,11 @@ public class Player {
         hand.addLast(deck.drawCard());
     }
 
+    //give the player his card back in case he play a wrong card
+    public void giveCardBack(Card card) {
+        hand.addLast(card);
+    }
+
     public int getHandSize() {
         return hand.size();
     }
