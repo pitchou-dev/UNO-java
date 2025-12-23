@@ -10,10 +10,6 @@ public class Wildcard extends Card implements Actionable {
         this.wildcard = wildcard;
 
     }
-    
-    public Wildtype  getWildcard(){
-        return this.wildcard;
-    }
 
     public Color Chosencolor() {
         System.out.println("Choose a color:1-Red,2-Yellow,3-Blue,4-Green");
@@ -66,7 +62,7 @@ public class Wildcard extends Card implements Actionable {
     
     @Override
     public String toString() {
-        return "[" +  getWildcard() + "]";
+        return "[" +  wildcard + "]";
     } 
 
 }
