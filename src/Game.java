@@ -3,14 +3,14 @@ import java.util.List;
 
 public class Game {
 
-    private Deck deck;
-    private List<Player> players;
-    private List<Card> discardPile;
+    private final Deck deck;
+    private final List<Player> players;
+    private final List<Card> discardPile;
     private int currentPlayerIndex = 0;
     private int direction = 1;//La direction initiale est de 1
     private Card topCard;
     private Color currentColor;
-    private int numPlayers;
+    private final int numPlayers;
 
     public Game(int numPlayers) {
         this.players = new java.util.ArrayList<>(numPlayers);
@@ -158,8 +158,4 @@ public class Game {
     }
 
 }
-//segem playedcard ki ma temchich pitchou sa7it 
-// ya pitchou rahou ykhelih yel3b w yna7ilo carta
-//printiw ki tskipiw wa7d
-//zido 9ololna wech drawina
 //say uno 

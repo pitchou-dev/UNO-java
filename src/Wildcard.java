@@ -3,16 +3,18 @@ import java.util.Scanner;
 
 public class Wildcard extends Card implements Actionable {
 
-    private Wildtype wildcard;
+    private final Wildtype wildcard;
 
     public Wildcard(Wildtype wildcard) {
         super(Color.BLACK);
         this.wildcard = wildcard;
 
     }
+    
     public Wildtype  getWildcard(){
         return this.wildcard;
     }
+
     public Color Chosencolor() {
         System.out.println("Choose a color:1-Red,2-Yellow,3-Blue,4-Green");
         Scanner scan = new Scanner(System.in);
@@ -46,7 +48,6 @@ public class Wildcard extends Card implements Actionable {
     }
 
     @Override
-
     public void Applyeffect(Game game) {
         game.setcurrentColor(Chosencolor());
         if (wildcard == Wildtype.DRAW_FOUR) {
@@ -57,11 +58,13 @@ public class Wildcard extends Card implements Actionable {
             }
         }
     }
+
     @Override
     public boolean canBePlayedOn( Card topCard , Color currentColor) {
         return true;    
     }
-     @Override
+    
+    @Override
     public String toString() {
         return "[" +  getWildcard() + "]";
     } 

@@ -2,7 +2,7 @@
 
 public class NumberCard extends Card {
 
-    private int value;
+    private final int value;
 
     public NumberCard(Color color, int value) {
         super(color);

@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Player {
 
     private String name;
-    private ArrayList<Card> hand = new ArrayList<>();
+    private final ArrayList<Card> hand = new ArrayList<>();
 
     public void setName() {
         Scanner scan = new Scanner(System.in);
@@ -73,11 +73,5 @@ public class Player {
    
 }
 
-     /*  public boolean canPlayCard(Card topCard, Card cardToPlay) {
-     return cardToPlay.getColor() == topCard.getColor() || cardToPlay.getValue() == topCard.getValue();
-    }*/ 
-//getter pour la main du joueur
 //add say uno when 1 card left
-//play card method and remove from hand
-//compare card with top card method
 

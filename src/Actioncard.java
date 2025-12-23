@@ -1,17 +1,19 @@
 
 public class Actioncard extends Card implements Actionable {
 
-    private Actiontype action;
+    private final Actiontype action;
 
     public Actioncard(Color color, Actiontype action) {
         super(color);
         this.action = action;
 
     }
+
     public Actiontype getaction(){
       return this.action;
     }
-     @Override
+
+    @Override
     public void Applyeffect(Game game) {
         switch (action) {
             case SKIP:
@@ -35,11 +37,9 @@ public class Actioncard extends Card implements Actionable {
 
                 break;
             default:
-
         }
     }
 
-  
     @Override
     public boolean canBePlayedOn( Card topCard , Color currentColor) {
         // t9der tl3b ida nafs color
@@ -50,10 +50,10 @@ public class Actioncard extends Card implements Actionable {
             return this.action == topActionCard.action;   
         }
         return false;
-
     }
-     @Override
+
+    @Override
     public String toString() {
         return "[" +  getaction()+"," + getColor() + "]";
-    } 
+    }
 }
