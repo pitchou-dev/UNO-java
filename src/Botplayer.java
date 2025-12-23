@@ -3,18 +3,19 @@ import java.util.Random;
 public class Botplayer extends Player {
 
     private static int numberOfBots = 0;
-    private String botName;
-    private int i = random(0, super.getHandSize() - 1);
+    private final String botName;
+    private static final Random RAND = new Random();
 
-    public int random(int min, int max) {
-        Random rand = new Random();
-        return rand.nextInt((max - min) + 1) + min;
+    public Botplayer() {
+        numberOfBots++;
+        this.botName = "BotPlayer" + numberOfBots;
     }
 
-    @Override
-    public void setName() {
-        numberOfBots++;
-        botName = "BotPlayer" + numberOfBots;
+    private int randomIndex(int size) {
+        if (size <= 0) {
+            throw new IllegalStateException("Bot has no cards to play");
+        }
+        return RAND.nextInt(size);
     }
 
     @Override
@@ -24,13 +25,14 @@ public class Botplayer extends Player {
 
     @Override
     public Card playCard() {
-        System.out.println(getName() + " played: " + getHand().get(i));
-        return getHand().remove(i);
+        int index = randomIndex(getHandSize());
+        Card card = getHand().get(index);
+        System.out.println(getName() + " played: " + card);
+        return getHand().remove(index);
     }
 
     @Override
     public void sayUno() {
         super.sayUno();
     }
-
 }
