@@ -90,8 +90,11 @@ public class Game {
             }
         }
         distributeCards();
-        topCard = deck.drawCard();
-        discardPile.add(topCard);
+        do { 
+            //dans le cas où la première carte (7,4% de chances) est une carte wild, on en prend une autre du deck
+            topCard = deck.drawCard();
+            discardPile.add(topCard);
+        } while (topCard instanceof Wildcard);
         currentColor = topCard.getColor();
     }
 
