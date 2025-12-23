@@ -61,6 +61,7 @@ public class Menu {
     public static void main(String[] args) {
         Menu menu = new Menu();
         menu.getUserChoice();
+        System.out.println("Thank you for playing!");
 
     }
 }
