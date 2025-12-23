@@ -74,29 +74,45 @@ public class Game {
         return deck;
     }
 
-    public void startGame(boolean botsChosen) {
-        if (botsChosen) {
-            for (int i = 0; i < numPlayers; i++) {
-                Botplayer bot = new Botplayer();
-                players.set(i, bot);
-            }
-        }   
-        else {
-            for (int i = 0; i < numPlayers; i++) {
-            System.out.println("Setting up Player " + (i + 1));
-            System.out.print("choose player name: ");
-            players.set(i, new Player());
-            players.get(i).setName();
-            }
+   public void startGame(boolean botsChosen) {
+
+    players.clear();
+
+    if (botsChosen) {
+        System.out.println("Setting up bot players...");
+
+        // numPlayers - 1 bots
+        for (int i = 0; i < numPlayers - 1; i++) {
+            players.add(new Botplayer());
         }
-        distributeCards();
-        do { 
-            //dans le cas où la première carte (7,4% de chances) est une carte wild, on en prend une autre du deck
-            topCard = deck.drawCard();
-            discardPile.add(topCard);
-        } while (topCard instanceof Wildcard);
-        currentColor = topCard.getColor();
+
+        // 1 human player
+        System.out.println("Setting up the human player.");
+        System.out.print("Choose player name: ");
+        Player humanPlayer = new Player();
+        humanPlayer.setName();
+        players.add(humanPlayer);
+
+    } else {
+        // all human players
+        for (int i = 0; i < numPlayers; i++) {
+            System.out.println("Setting up Player " + (i + 1));
+            System.out.print("Choose player name: ");
+            Player player = new Player();
+            player.setName();
+            players.add(player);
+        }
     }
+
+    distributeCards();
+
+    do {
+        topCard = deck.drawCard();
+        discardPile.add(topCard);
+    } while (topCard instanceof Wildcard);
+
+    currentColor = topCard.getColor();
+}
 
     private Card playerChoose(Player currentPlayer, Card topcard, Color currentColor) {
         Card playedCard = currentPlayer.playCard();
