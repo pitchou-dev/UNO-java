@@ -2,7 +2,7 @@
 public class Menu {
 
     java.util.Scanner scanner = new java.util.Scanner(System.in);
-
+    private boolean botschosen;
     private int getUserChoice() {
         return scanner.nextInt();
     }
@@ -32,10 +32,7 @@ public class Menu {
                 switch (choiceBotsorNot) {
                     case 1:
                         System.out.println("You chose to play with bots.");
-                        int x = this.NumberofPlayers();
-                        Game gameWithBots = new Game(x);
-                        gameWithBots.startGame();
-                        gameWithBots.play();
+                        this.botschosen = true;
                         break;
                     case 2:
                         System.out.println("You chose to play without bots.");
@@ -48,7 +45,7 @@ public class Menu {
                 System.out.println("Starting the game...");
                 int x = this.NumberofPlayers();
                 Game game = new Game(x);
-                game.startGame();
+                game.startGame(this.botschosen);
                 game.play();
                 break;
             case 2:

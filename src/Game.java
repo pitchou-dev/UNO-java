@@ -74,12 +74,20 @@ public class Game {
         return deck;
     }
 
-    public void startGame() {
-        for (int i = 0; i < numPlayers; i++) {
+    public void startGame(boolean botsChosen) {
+        if (botsChosen) {
+            for (int i = 0; i < numPlayers; i++) {
+                Botplayer bot = new Botplayer();
+                players.set(i, bot);
+            }
+        }   
+        else {
+            for (int i = 0; i < numPlayers; i++) {
             System.out.println("Setting up Player " + (i + 1));
             System.out.print("choose player name: ");
             players.set(i, new Player());
             players.get(i).setName();
+            }
         }
         distributeCards();
         topCard = deck.drawCard();
