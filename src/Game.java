@@ -82,8 +82,11 @@ public class Game {
             players.get(i).setName();
         }
         distributeCards();
-        topCard = deck.drawCard();
-        discardPile.add(topCard);
+        do { 
+            //dans le cas rare (0,07% de chances) où la première carte est une carte wild, on en prend une autre du deck
+            topCard = deck.drawCard();
+            discardPile.add(topCard);
+        } while (topCard instanceof Wildcard);
         currentColor = topCard.getColor();
     }
 
