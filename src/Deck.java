@@ -8,11 +8,11 @@ public class Deck {
     private List<Card> cards;
 
     public Deck() {
-        initDeck();    //we needed to call initDeck in the constructor to initialize the deck
+        initDeck(); // we needed to call initDeck in the constructor to initialize the deck
     }
 
     private void initDeck() {
-        this.cards = new ArrayList<>();        //we still need to add special cards in tp 3
+        this.cards = new ArrayList<>(); // we still need to add special cards in tp 3
         for (Color color : Color.values()) {
 
             if (color == Color.BLACK) {

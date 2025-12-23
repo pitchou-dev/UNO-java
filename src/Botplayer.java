@@ -4,7 +4,7 @@ public class Botplayer extends Player {
 
     private static int numberOfBots = 0;
     private String botName;
-    private int i = random(0, super.getHandSize()-1);
+    private int i = random(0, super.getHandSize() - 1);
 
     public int random(int min, int max) {
         Random rand = new Random();
@@ -32,5 +32,5 @@ public class Botplayer extends Player {
     public void sayUno() {
         super.sayUno();
     }
-    
+
 }

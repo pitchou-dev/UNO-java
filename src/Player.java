@@ -17,11 +17,11 @@ public class Player {
     }
 
     public void drawCard(Deck deck) {
-        //la carte que le joueur tire est ajouté à son hand
+        // la carte que le joueur tire est ajouté à son hand
         hand.addLast(deck.drawCard());
     }
 
-    //give the player his card back in case he play a wrong card
+    // give the player his card back in case he play a wrong card
     public void giveCardBack(Card card) {
         hand.addLast(card);
     }
@@ -30,7 +30,7 @@ public class Player {
         return hand.size();
     }
 
-    public void displayHand() {   //i added this method to display the player's hand in Demo.java
+    public void displayHand() { // i added this method to display the player's hand in Demo.java
         System.out.println("Player " + name + " has the following cards in hand:");
         int i = 1;
         for (Card card : hand) {
@@ -42,15 +42,15 @@ public class Player {
 
     public Card playCard() {
         int num;
-        do { 
+        do {
             System.out.println("Choose your card: ");
             Scanner scan = new Scanner(System.in);
             num = scan.nextInt();
         } while (num <= 0 || num > hand.size());
 
-        System.out.println(name + " played: " + hand.get(num-1));
+        System.out.println(name + " played: " + hand.get(num - 1));
 
-        return hand.remove(num-1);
+        return hand.remove(num - 1);
     }
 
     public boolean CanPlayerPlay(Card topCard, Color currentColor) {
@@ -65,13 +65,13 @@ public class Player {
     public ArrayList<Card> getHand() {
         return hand;
     }
+
     public void sayUno() {
         if (hand.size() == 1) {
             System.out.println(name + " says UNO!");
         }
     }
-   
+
 }
 
-//add say uno when 1 card left
-
+// add say uno when 1 card left

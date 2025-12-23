@@ -5,5 +5,5 @@ public enum Color {
     BLUE,
     GREEN,
     YELLOW,
-    BLACK, // WildCard color 
+    BLACK, // WildCard color
 }

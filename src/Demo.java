@@ -5,5 +5,5 @@ public class Demo {
         Game game = new Game(4);
         game.startGame();
         game.play();
-    }  //the demo for tp 2 
+    } // the demo for tp 2
 }

@@ -9,8 +9,8 @@ public class Actioncard extends Card implements Actionable {
 
     }
 
-    public Actiontype getaction(){
-      return this.action;
+    public Actiontype getaction() {
+        return this.action;
     }
 
     @Override
@@ -19,13 +19,13 @@ public class Actioncard extends Card implements Actionable {
             case SKIP:
                 System.out.println("Next player's turn is skipped");
                 game.nextPlayer();
-                //On modifie l'index du prochain joueur en skippant un joueur
+                // On modifie l'index du prochain joueur en skippant un joueur
 
                 break;
             case REVERSE:
                 System.out.println("Play direction is reversed");
                 int newDirection = game.getdirection() * -1;
-                game.setdirection(newDirection); //On modifie la direction du jeu
+                game.setdirection(newDirection); // On modifie la direction du jeu
                 ;
 
                 break;
@@ -41,19 +41,19 @@ public class Actioncard extends Card implements Actionable {
     }
 
     @Override
-    public boolean canBePlayedOn( Card topCard , Color currentColor) {
+    public boolean canBePlayedOn(Card topCard, Color currentColor) {
         // t9der tl3b ida nafs color
         if (this.getColor() == currentColor) {
             return true;
-        } 
+        }
         if (topCard instanceof Actioncard topActionCard) {
-            return this.action == topActionCard.action;   
+            return this.action == topActionCard.action;
         }
         return false;
     }
 
     @Override
     public String toString() {
-        return "[" +  getaction()+"," + getColor() + "]";
+        return "[" + getaction() + "," + getColor() + "]";
     }
 }

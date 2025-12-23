@@ -56,13 +56,13 @@ public class Wildcard extends Card implements Actionable {
     }
 
     @Override
-    public boolean canBePlayedOn( Card topCard , Color currentColor) {
-        return true;    
+    public boolean canBePlayedOn(Card topCard, Color currentColor) {
+        return true;
     }
-    
+
     @Override
     public String toString() {
-        return "[" +  wildcard + "]";
-    } 
+        return "[" + wildcard + "]";
+    }
 
 }

@@ -7,7 +7,7 @@ public class Game {
     private final List<Player> players;
     private final List<Card> discardPile;
     private int currentPlayerIndex = 0;
-    private int direction = 1;//La direction initiale est de 1
+    private int direction = 1;// La direction initiale est de 1
     private Card topCard;
     private Color currentColor;
     private final int numPlayers;
@@ -52,7 +52,7 @@ public class Game {
     }
 
     public void discardtodraw(Deck deck) {
-        discardPile.removeLast(); // remove the top card from the discard pile 
+        discardPile.removeLast(); // remove the top card from the discard pile
         deck.refillDeckAndShuffle(discardPile);
         discardPile.clear();
         discardPile.add(topCard); // add the top card to the discard pile again
@@ -91,43 +91,44 @@ public class Game {
         Card playedCard = currentPlayer.playCard();
         if (!playedCard.canBePlayedOn(topcard, currentColor)) {
             System.out.println("You can't play with that card.");
-            //give his card back: 
+            // give his card back:
             currentPlayer.giveCardBack(playedCard);
             currentPlayer.displayHand();
             return playerChoose(currentPlayer, topcard, currentColor);
         } else {
             return playedCard;
         }
-    } 
-    
+    }
+
     public void play() {
         boolean gameOver = false;
 
-        while(!gameOver) {
+        while (!gameOver) {
             Player currentPlayer = players.get(currentPlayerIndex);
             System.out.println("\n--- Turn of " + currentPlayer.getName() + " ---");
-            if(topCard instanceof Wildcard) {
+            if (topCard instanceof Wildcard) {
                 System.out.println("Current color is : " + currentColor);
             }
             System.out.println("Top card is : " + topCard);
-            
-            //si le joueur est humain les cartes s'afficheront sinon non (polymorphisme)
+
+            // si le joueur est humain les cartes s'afficheront sinon non (polymorphisme)
             currentPlayer.displayHand();
 
             Card playedCard = null;
             if (currentPlayer.CanPlayerPlay(topCard, currentColor)) {
-                //si le joueur a une carte jouable alors il doit choisir une des cartes jouables:
+                // si le joueur a une carte jouable alors il doit choisir une des cartes
+                // jouables:
                 playedCard = playerChoose(currentPlayer, topCard, currentColor);
             } else {
-                //sinon il pioche une carte et si il peut jouer avec cette carte joue:
-                System.out.println("You dont have any playable card, drawing one..."); 
+                // sinon il pioche une carte et si il peut jouer avec cette carte joue:
+                System.out.println("You dont have any playable card, drawing one...");
                 currentPlayer.drawCard(deck);
                 if (deck.isEmpty()) {
                     discardtodraw(deck);
                 }
                 currentPlayer.displayHand();
-                
-                if(currentPlayer.CanPlayerPlay(topCard, currentColor)) {
+
+                if (currentPlayer.CanPlayerPlay(topCard, currentColor)) {
                     playedCard = playerChoose(currentPlayer, topCard, currentColor);
                 }
             }
@@ -135,9 +136,9 @@ public class Game {
             if (playedCard != null) {
                 topCard = playedCard;
                 discardPile.add(topCard);
-                currentColor = topCard.getColor(); //important pour les wildcard
+                currentColor = topCard.getColor(); // important pour les wildcard
 
-                //si la carte doit affecter le jeu on applique son effet:
+                // si la carte doit affecter le jeu on applique son effet:
                 if (playedCard instanceof Actionable actionable) {
                     actionable.Applyeffect(this);
                 }
@@ -158,4 +159,4 @@ public class Game {
     }
 
 }
-//say uno 
+// say uno
