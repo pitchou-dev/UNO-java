@@ -51,14 +51,14 @@ public class Game {
         return currentColor;
     }
 
-    public void discardtodraw(Deck deck) {
+    private void discardtodraw(Deck deck) {
         discardPile.removeLast(); // remove the top card from the discard pile
         deck.refillDeckAndShuffle(discardPile);
         discardPile.clear();
         discardPile.add(topCard); // add the top card to the discard pile again
     }
 
-    public void distributeCards() {
+    private void distributeCards() {
         for (Player player : players) {
             for (int i = 0; i < 7; i++) {
                 player.drawCard(deck);
