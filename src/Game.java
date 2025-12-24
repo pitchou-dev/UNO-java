@@ -96,7 +96,7 @@ public class Game {
     } else {
         // all human players
         for (int i = 0; i < numPlayers; i++) {
-            System.out.println("Setting up Player " + (i + 1));
+            System.out.println("Setting up Player " + (i + 1)+ "...");
             System.out.print("Choose player name: ");
             Player player = new Player();
             player.setName();
@@ -132,7 +132,7 @@ public class Game {
 
         while (!gameOver) {
             Player currentPlayer = players.get(currentPlayerIndex);
-            System.out.println("\n--- Turn of " + currentPlayer.getName() + " ---");
+            System.out.println("\n============ Turn of " + currentPlayer.getName() + " ============");
             if (topCard instanceof Wildcard) {
                 System.out.println("Current color is : " + currentColor);
             }

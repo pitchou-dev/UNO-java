@@ -20,6 +20,7 @@ public class Menu {
     }
 
     public Menu() {
+        System.err.println("============== UNO GAME ==============");
         System.out.println("1. Start Game\n"
                 + "2. Exit");
         int choice = this.getUserChoice();

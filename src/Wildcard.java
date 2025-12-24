@@ -12,7 +12,7 @@ public class Wildcard extends Card implements Actionable {
     }
 
     public Color Chosencolor() {
-        System.out.println("Choose a color:1-Red,2-Yellow,3-Blue,4-Green");
+        System.out.println("Choose a color: 1:Red 2:Yellow 3:Blue 4:Green");
         Scanner scan = new Scanner(System.in);
         int Choice = scan.nextInt();
         Color newcolor;
@@ -34,7 +34,7 @@ public class Wildcard extends Card implements Actionable {
                 break;
 
             default:
-                System.out.println("Invalid Choice, Try again");
+                System.out.println("Invalid Choice, Try again.");
 
                 Chosencolor();
                 break;
@@ -47,7 +47,7 @@ public class Wildcard extends Card implements Actionable {
     public void Applyeffect(Game game) {
         game.setcurrentColor(Chosencolor());
         if (wildcard == Wildtype.DRAW_FOUR) {
-            System.out.println("Next player draws four cards");
+            System.out.println("Next player draws four cards.");
             game.nextPlayer();
             for (int i = 0; i < 4; i++) {
                 game.getPlayer(game.getcurrentPlayerIndex()).drawCard(game.getDeck());
