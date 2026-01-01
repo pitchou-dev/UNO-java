@@ -174,6 +174,9 @@ public class Game {
                 if (playedCard instanceof Actionable actionable) {
                     actionable.Applyeffect(this);
                 }
+                
+                // si il reste une seule carte seulement afficher "say uno!"
+                currentPlayer.sayUno();
 
                 if (currentPlayer.getHand().isEmpty()) {
                     System.out.println("Congratulation! " + currentPlayer.getName() + ", won !");
