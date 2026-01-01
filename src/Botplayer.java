@@ -27,12 +27,15 @@ public class Botplayer extends Player {
     public Card playCard() {
         int index = randomIndex(getHandSize());
         Card card = getHand().get(index);
-        System.out.println(getName() + " played: " + card);
         return getHand().remove(index);
     }
 
     @Override
     public void sayUno() {
         super.sayUno();
+    }
+    @Override
+    public void displayHand() {
+        // Bots do not display their hand
     }
 }

@@ -117,7 +117,9 @@ public class Game {
     private Card playerChoose(Player currentPlayer, Card topcard, Color currentColor) {
         Card playedCard = currentPlayer.playCard();
         if (!playedCard.canBePlayedOn(topcard, currentColor)) {
+            if (!(currentPlayer instanceof Botplayer)) {
             System.out.println("You can't play with that card.");
+            }
             // give his card back:
             currentPlayer.giveCardBack(playedCard);
             currentPlayer.displayHand();
@@ -140,12 +142,14 @@ public class Game {
 
             // si le joueur est humain les cartes s'afficheront sinon non (polymorphisme)
             currentPlayer.displayHand();
+               
 
             Card playedCard = null;
             if (currentPlayer.CanPlayerPlay(topCard, currentColor)) {
                 // si le joueur a une carte jouable alors il doit choisir une des cartes
                 // jouables:
                 playedCard = playerChoose(currentPlayer, topCard, currentColor);
+                System.out.println(currentPlayer.getName() + " played: " + playedCard);
             } else {
                 // sinon il pioche une carte et si il peut jouer avec cette carte joue:
                 System.out.println("You dont have any playable card, drawing one...");
@@ -157,6 +161,7 @@ public class Game {
 
                 if (currentPlayer.CanPlayerPlay(topCard, currentColor)) {
                     playedCard = playerChoose(currentPlayer, topCard, currentColor);
+                    System.out.println(currentPlayer.getName() + " played: " + playedCard);
                 }
             }
 

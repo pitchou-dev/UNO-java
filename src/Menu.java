@@ -10,7 +10,7 @@ public class Menu {
     public int NumberofPlayers() {
         System.out.println("Enter number of players (2-4): ");
         int numPlayers = this.getUserChoice();
-        if (numPlayers < 2 || numPlayers > 4) {
+        if (numPlayers < 2|| numPlayers > 4) {
             System.out.println("Invalid number of players. Please enter a number between 2 and 4.");
             this.NumberofPlayers();
         } else {

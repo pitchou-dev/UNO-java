@@ -48,7 +48,6 @@ public class Player {
             num = scan.nextInt();
         } while (num <= 0 || num > hand.size());
 
-        System.out.println(name + " played: " + hand.get(num - 1));
 
         return hand.remove(num - 1);
     }
