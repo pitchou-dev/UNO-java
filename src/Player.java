@@ -6,7 +6,7 @@ public class Player {
 
     private String name;
     private final ArrayList<Card> hand = new ArrayList<>();
-    Game game;
+
 
     public void setName() {
         Scanner scan = new Scanner(System.in);
@@ -72,7 +72,7 @@ public class Player {
         }
     }
 
-      public Color Chosencolor(){
+      public Color Chosencolor(Game game){
         if( game.getcurrentColor()!=Color.BLACK){
             return game.getcurrentColor();
         }
@@ -100,7 +100,7 @@ public class Player {
             default:
                 System.out.println("Invalid Choice, Try again.");
 
-                Chosencolor();
+                Chosencolor(game);
                 break;
 
         }

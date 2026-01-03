@@ -40,7 +40,7 @@ public class Botplayer extends Player {
     }
     public static final Random RANDCOLOR = new Random();
     @Override
-    public Color Chosencolor() {
+    public Color Chosencolor(Game game) {
         Color CurrentColor = Color.BLACK;
         while (Color.BLACK == CurrentColor) {
             int pick = RANDCOLOR.nextInt(Color.values().length);

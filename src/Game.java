@@ -174,6 +174,7 @@ public class Game {
                 if (playedCard instanceof Actionable actionable) {
                     actionable.Applyeffect(this);
                 }
+                currentPlayer.Chosencolor(Game.this);
                 
                 // si il reste une seule carte seulement afficher "say uno!"
                 currentPlayer.sayUno();

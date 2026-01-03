@@ -1,5 +1,4 @@
 
-import java.util.Scanner;
 
 public class Wildcard extends Card implements Actionable {
 
@@ -13,7 +12,7 @@ public class Wildcard extends Card implements Actionable {
 
     @Override
     public void Applyeffect(Game game) {
-        game.setcurrentColor(game.getPlayer(game.getcurrentPlayerIndex()).Chosencolor());
+        game.setcurrentColor(game.getPlayer(game.getcurrentPlayerIndex()).Chosencolor(game));
         if (wildcard == Wildtype.DRAW_FOUR) {
             System.out.println("Next player draws four cards.");
             game.nextPlayer();
