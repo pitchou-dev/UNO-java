@@ -2,6 +2,8 @@
 public class Actioncard extends Card implements Actionable {
 
     private final Actiontype action;
+    
+
 
     public Actioncard(Color color, Actiontype action) {
         super(color);

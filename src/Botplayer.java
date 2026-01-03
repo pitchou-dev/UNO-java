@@ -38,4 +38,14 @@ public class Botplayer extends Player {
     public void displayHand() {
         // Bots do not display their hand
     }
+    public static final Random RANDCOLOR = new Random();
+    @Override
+    public Color Chosencolor() {
+        Color CurrentColor = Color.BLACK;
+        while (Color.BLACK == CurrentColor) {
+            int pick = RANDCOLOR.nextInt(Color.values().length);
+            CurrentColor = Color.values()[pick];
+        }
+        return CurrentColor;
+    }
 }

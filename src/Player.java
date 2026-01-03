@@ -6,6 +6,7 @@ public class Player {
 
     private String name;
     private final ArrayList<Card> hand = new ArrayList<>();
+    Game game;
 
     public void setName() {
         Scanner scan = new Scanner(System.in);
@@ -71,6 +72,43 @@ public class Player {
         }
     }
 
+      public Color Chosencolor(){
+        if( game.getcurrentColor()!=Color.BLACK){
+            return game.getcurrentColor();
+        }
+        System.out.println("Choose a color: 1:Red 2:Yellow 3:Blue 4:Green");
+        Scanner scan = new Scanner(System.in);
+        int Choice = scan.nextInt();
+        Color newcolor;
+        newcolor = Color.BLACK;
+
+        switch (Choice) {
+            case 1:
+                newcolor = Color.RED;
+
+                break;
+            case 2:
+                newcolor = Color.YELLOW;
+                break;
+            case 3:
+                newcolor = Color.BLUE;
+                break;
+            case 4:
+                newcolor = Color.GREEN;
+                break;
+
+            default:
+                System.out.println("Invalid Choice, Try again.");
+
+                Chosencolor();
+                break;
+
+        }
+        return newcolor;
+    }
 }
+
+
+
 
 // add say uno when 1 card left

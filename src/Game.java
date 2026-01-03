@@ -31,7 +31,7 @@ public class Game {
         return currentPlayerIndex;
     }
 
-    public Player getPlayer(int currentPlayerIndex) {
+    public Player getPlayer(int currentPlayerIndex1) {
         return players.get(currentPlayerIndex);
     }
 
