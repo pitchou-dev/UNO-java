@@ -111,7 +111,11 @@ public class Game {
         discardPile.add(topCard);
     } while (topCard instanceof Wildcard);
 
-    currentColor = topCard.getColor();
+    if (topCard instanceof Wildcard) {
+        currentColor = players.get(currentPlayerIndex).Chosencolor(this);
+    } else {
+        currentColor = topCard.getColor();
+    }
 }
 
     private Card playerChoose(Player currentPlayer, Card topcard, Color currentColor) {
@@ -174,7 +178,7 @@ public class Game {
                 if (playedCard instanceof Actionable actionable) {
                     actionable.Applyeffect(this);
                 }
-                currentPlayer.Chosencolor(Game.this);
+            
                 
                 // si il reste une seule carte seulement afficher "say uno!"
                 currentPlayer.sayUno();
