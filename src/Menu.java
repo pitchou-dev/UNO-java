@@ -2,10 +2,14 @@
 public class Menu {
 
     java.util.Scanner scanner = new java.util.Scanner(System.in);
+    private int getreplayChoice() {
+        return scanner.nextInt();
+    }
     private boolean botschosen;
     private int getUserChoice() {
         return scanner.nextInt();
     }
+    
 
     public int NumberofPlayers() {
         System.out.println("Enter number of players (2-4): ");
@@ -18,9 +22,28 @@ public class Menu {
         }
         return numPlayers;
     }
-
+    public void replayMenu() {
+        System.out.println("do you want to play again?\n"
+                + "1. Yes\n"
+                + "2. No");
+        int rpchoice = this.getreplayChoice();
+        switch (rpchoice) {
+            case 1:
+                Menu menu = new Menu();
+                menu.getUserChoice();
+                break;
+            case 2:
+                System.out.println("Exiting the game. Goodbye!");
+                System.exit(0);
+            default:
+                System.out.println("Invalid choice. Please try again.");
+                this.replayMenu();
+                break;
+        }
+    }   
     public Menu() {
-        System.err.println("============== UNO GAME ==============");
+        System.out.println("============== UNO GAME ==============");
+        System.out.println("The rules are simple: be the first to get rid of all your cards!");
         System.out.println("1. Start Game\n"
                 + "2. Exit");
         int choice = this.getUserChoice();
@@ -57,12 +80,13 @@ public class Menu {
                 this.getUserChoice();
                 break;
         }
-    }
+    } 
 
     public static void main(String[] args) {
         Menu menu = new Menu();
         menu.getUserChoice();
-        System.out.println("Thank you for playing!");
-
+        while (true) {
+            menu.replayMenu();
+        }
     }
 }

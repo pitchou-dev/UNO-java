@@ -185,6 +185,7 @@ public class Game {
 
                 if (currentPlayer.getHand().isEmpty()) {
                     System.out.println("Congratulation! " + currentPlayer.getName() + ", won !");
+                    System.out.println("Game Over! press enter to exit.");
                     gameOver = true;
                 }
 
@@ -199,4 +200,3 @@ public class Game {
     }
 
 }
-// say uno
