@@ -1,6 +1,7 @@
 
 import java.util.List;
-
+import java.util.Timer;
+import java.util.TimerTask;
 public class Game {
 
     private final Deck deck;
@@ -12,6 +13,7 @@ public class Game {
     private Color currentColor;
     private final int numPlayers;
 
+
     public Game(int numPlayers) {
         this.players = new java.util.ArrayList<>(numPlayers);
         for (int i = 0; i < numPlayers; i++) {
@@ -22,6 +24,7 @@ public class Game {
         this.deck = new Deck();
         this.deck.shuffle();
     }
+    
 
     public void nextPlayer() {
         currentPlayerIndex = (currentPlayerIndex + direction + numPlayers) % numPlayers;
@@ -73,7 +76,7 @@ public class Game {
     public Deck getDeck() {
         return deck;
     }
-
+   
    public void startGame(boolean botsChosen) {
 
     players.clear();
@@ -129,6 +132,7 @@ public class Game {
             currentPlayer.displayHand();
             return playerChoose(currentPlayer, topcard, currentColor);
         } else {
+            System.out.print(currentPlayer.getName() + " has " + currentPlayer.getHandSize() + " cards left. " + "\n");
             return playedCard;
         }
     }
@@ -198,5 +202,4 @@ public class Game {
             }
         }
     }
-
 }
