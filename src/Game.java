@@ -138,7 +138,7 @@ public class Game {
     }
 
     public void play() {
-        boolean gameOver = false;
+    boolean gameOver = false;
 
         while (!gameOver) {
             Player currentPlayer = players.get(currentPlayerIndex);
@@ -189,7 +189,7 @@ public class Game {
 
                 if (currentPlayer.getHand().isEmpty()) {
                     System.out.println("Congratulation! " + currentPlayer.getName() + ", won !");
-                    System.out.println("Game Over! press enter to exit.");
+                    System.out.println("Game Over!.");
                     gameOver = true;
                 }
 
