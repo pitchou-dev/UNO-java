@@ -49,3 +49,16 @@ public class Botplayer extends Player {
         return CurrentColor;
     }
 }
+/* 
+ Example of using a timer to simulate thinking time
+    Timer chrono = new Timer();
+    chrono.schedule(new TimerTask() {
+        @Override
+        public void run() {
+            System.out.println("The bot is thinking...");
+            return
+            ;
+        }
+    }, 1000);
+    */ 
+   // timer prototype li 3ambalo kifech ydirha ya3lemna
