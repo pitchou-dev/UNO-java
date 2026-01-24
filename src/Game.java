@@ -12,8 +12,7 @@ public class Game {
     private Card topCard;
     private Color currentColor;
     private final int numPlayers;
-
-
+    
     public Game(int numPlayers) {
         this.players = new java.util.ArrayList<>(numPlayers);
         for (int i = 0; i < numPlayers; i++) {
@@ -24,7 +23,41 @@ public class Game {
         this.deck = new Deck();
         this.deck.shuffle();
     }
+
+    public void resetGame() {
+        
+    discardPile.clear();
+
+    for (Player p : players) {
+        p.getHand().clear();   // vider les mains
+    }
+
+    currentPlayerIndex = 0;
+    direction = 1;
+
+    Deck newDeck = new Deck();
+    newDeck.shuffle();
+
+    this.deck.refillDeckAndShuffle(discardPile);
     
+    distributeCards();
+
+    do {
+        topCard = deck.drawCard();
+        discardPile.add(topCard);
+    } while (topCard instanceof Wildcard);
+
+    currentColor = topCard.getColor();
+}
+
+
+      public void winresults(){// celui ci affiche les victoires uniquement pour les humains
+        for (Player p : players){
+    
+            System.out.println("player "+p.getName()+"'s stats are:");
+            System.out.println("Wins: "+p.getgameswon());
+        }
+    }
 
     public void nextPlayer() {
         currentPlayerIndex = (currentPlayerIndex + direction + numPlayers) % numPlayers;
@@ -150,7 +183,8 @@ public class Game {
 
             // si le joueur est humain les cartes s'afficheront sinon non (polymorphisme)
             currentPlayer.displayHand();
-               
+            
+            
 
             Card playedCard = null;
             if (currentPlayer.CanPlayerPlay(topCard, currentColor)) {
@@ -189,7 +223,10 @@ public class Game {
 
                 if (currentPlayer.getHand().isEmpty()) {
                     System.out.println("Congratulation! " + currentPlayer.getName() + ", won !");
+                    currentPlayer.setgameswon(currentPlayer.getgameswon()+1);
+                    winresults();
                     System.out.println("Game Over!.");
+
                     gameOver = true;
                 }
 
