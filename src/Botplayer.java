@@ -32,7 +32,9 @@ public class Botplayer extends Player {
 
     @Override
     public void sayUno() {
-        super.sayUno();
+         if (getHandSize() == 1) {
+            System.out.println(botName + " says UNO!");
+        }
     }
     @Override
     public void displayHand() {
