@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 public class Menu {
 
+    private Game game;
     private final Scanner scanner = new Scanner(System.in);
     private boolean botsChosen;
 
@@ -17,17 +18,26 @@ public class Menu {
 
 
     public void start() {
+        if (game==null) {
         System.out.println("============== UNO GAME ==============");
         System.out.println("The rules are simple: be the first to get rid of all your cards!");
         System.out.println("1. Start Game");
         System.out.println("2. Exit");
-
+        }
+        else {
+           System.out.println("1. Confirm replay");
+           System.out.println("2. Exit");
+        }
         int choice = getUserChoice();
 
         switch (choice) {
             case 1:
-                setupGame();
-                break;
+                if (game == null) {
+                setupGame();   // première fois seulement
+            }
+            game.play();       
+            game.resetGame(); // réinitialise le jeu pour une nouvelle partie en replayant
+            break;
             case 2:
                 System.out.println("Exiting the game. Goodbye!");
                 System.exit(0);
@@ -48,9 +58,8 @@ public class Menu {
         int players = numberOfPlayers();
 
         System.out.println("Starting the game...");
-        Game game = new Game(players);
+        game = new Game(players);
         game.startGame(botsChosen);
-        game.play();
     }
 
 
