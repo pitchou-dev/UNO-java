@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Player {
-
+    private int gameswon;
     private String name;
     private final ArrayList<Card> hand = new ArrayList<>();
 
@@ -105,6 +105,12 @@ public class Player {
 
         }
         return newcolor;
+    }
+    public int getgameswon(){
+        return gameswon;
+    }
+    public void setgameswon(int gameswon){
+        this.gameswon = gameswon;
     }
 }
 
