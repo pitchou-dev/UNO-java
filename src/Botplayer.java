@@ -23,8 +23,13 @@ public class Botplayer extends Player {
 
     @Override
     public Card playCard() {
+<<<<<<< HEAD
         int index = randomIndex(getHandSize()); //chooses a random index between 0 and handsize
         return getHand().remove(index); //card to be played and removed
+=======
+        int index = randomIndex(getHandSize());
+        return getHand().remove(index);
+>>>>>>> 95d35f053dd5f00e55062bd0475940266751eb44
     }
 
     @Override
