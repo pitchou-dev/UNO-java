@@ -18,27 +18,26 @@ public class Actioncard extends Card implements Actionable {
     @Override
     public void Applyeffect(Game game) { //for each action type its corresponding effect
         switch (action) {
-            case SKIP:
+            case SKIP -> {
                 System.out.println("Next player's turn is skipped");
                 game.nextPlayer();
                 // On modifie l'index du prochain joueur en skippant un joueur
-
-                break;
-            case REVERSE:
+            }
+            case REVERSE -> {
                 System.out.println("Play direction is reversed");
                 int newDirection = game.getdirection() * -1;
                 game.setdirection(newDirection); // On modifie la direction du jeu
-                ;
-
-                break;
-            case DRAW_TWO:
+                
+            }
+            case DRAW_TWO -> {
                 System.out.println("Next player draws two cards");
                 game.nextPlayer();
                 game.getPlayer(game.getcurrentPlayerIndex()).drawCard(game.getDeck());
                 game.getPlayer(game.getcurrentPlayerIndex()).drawCard(game.getDeck());
                 // On passe au prochain joueur et force deux fois la pioche
-                break;
-            default:
+            }
+            default -> {
+            }
         }
     }
 

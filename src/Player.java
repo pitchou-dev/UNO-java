@@ -83,26 +83,17 @@ public class Player {
         Color newcolor;
         newcolor = Color.BLACK;
 
-        switch (Choice) {
-            case 1:
-                newcolor = Color.RED;
+        switch (Choice) { //converted switch to rule switch thus why the syntax seems different
+            case 1 -> newcolor = Color.RED;
+            case 2 -> newcolor = Color.YELLOW;
+            case 3 -> newcolor = Color.BLUE;
+            case 4 -> newcolor = Color.GREEN;
 
-                break;
-            case 2:
-                newcolor = Color.YELLOW;
-                break;
-            case 3:
-                newcolor = Color.BLUE;
-                break;
-            case 4:
-                newcolor = Color.GREEN;
-                break;
-
-            default:
+            default -> {
                 System.out.println("Invalid Choice, Try again.");
 
                 Chosencolor(game);
-                break;
+            }
 
         }
         return newcolor;
