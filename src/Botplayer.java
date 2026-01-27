@@ -30,7 +30,8 @@ public class Botplayer extends Player {
     @Override
     public void sayUno() {
          if (getHandSize() == 1) {
-            System.out.println(botName + " says UNO!");
+            System.out.println(botName + " says UNO!"); // was saying null because of privacy issues so we overrid it
+            System.out.println("Other players should be careful!!");
         }
     }
     @Override
@@ -42,10 +43,10 @@ public class Botplayer extends Player {
     public Color Chosencolor(Game game) {
         Color CurrentColor = Color.BLACK;
         while (Color.BLACK == CurrentColor) {
-            int pick = RANDCOLOR.nextInt(Color.values().length);
-            CurrentColor = Color.values()[pick];
+            int pick = RANDCOLOR.nextInt(Color.values().length); //randomly takes on the colors
+            CurrentColor = Color.values()[pick]; //changes game color to it
         }
-        return CurrentColor;
+        return CurrentColor; //handles the bot choice in the case of a color choice presented to it
     }
 }
 /* 
@@ -60,4 +61,4 @@ public class Botplayer extends Player {
         }
     }, 1000);
     */ 
-   // timer prototype li 3ambalo kifech ydirha ya3lemna
+   // timer prototype wanted to simulate bot thinking behaviour but faced some issues ,commented for trying value

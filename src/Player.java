@@ -8,7 +8,7 @@ public class Player {
     private final ArrayList<Card> hand = new ArrayList<>();
 
 
-    public void setName() {
+    public void setName() { //set player same 
         Scanner scan = new Scanner(System.in);
         this.name = scan.next();
     }
@@ -31,7 +31,7 @@ public class Player {
         return hand.size();
     }
 
-    public void displayHand() { // i added this method to display the player's hand in Demo.java
+    public void displayHand() { // i added this method to display the player's hand in Demo.java (old comment)
         System.out.println("Player " + name + " has the following cards in hand:");
         int i = 1;
         for (Card card : hand) {
@@ -53,7 +53,7 @@ public class Player {
         return hand.remove(num - 1);
     }
 
-    public boolean CanPlayerPlay(Card topCard, Color currentColor) {
+    public boolean CanPlayerPlay(Card topCard, Color currentColor) { //checks wether to make him draw or not
         for (Card card : hand) {
             if (card.canBePlayedOn(topCard, currentColor)) {
                 return true;
@@ -69,6 +69,7 @@ public class Player {
     public void sayUno() {
         if (hand.size() == 1) {
             System.out.println(name + " says UNO!");
+            System.out.println("Other players should be careful!!");
         }
     }
 
@@ -117,4 +118,4 @@ public class Player {
 
 
 
-// add say uno when 1 card left
+// add say uno when 1 card left(old comment)

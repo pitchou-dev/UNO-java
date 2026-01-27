@@ -1,5 +1,5 @@
 
-public class Demo {
+public class Demo {  //a class we used for testing purposes throught the whole development process
 
     public static void main(String[] args) {
         Game game = new Game(4);

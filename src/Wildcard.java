@@ -11,9 +11,9 @@ public class Wildcard extends Card implements Actionable {
   
 
     @Override
-    public void Applyeffect(Game game) {
-        game.setcurrentColor(game.getPlayer(game.getcurrentPlayerIndex()).Chosencolor(game));
-        if (wildcard == Wildtype.DRAW_FOUR) {
+    public void Applyeffect(Game game) { //wild cards effects
+        game.setcurrentColor(game.getPlayer(game.getcurrentPlayerIndex()).Chosencolor(game));//done for both cases
+        if (wildcard == Wildtype.DRAW_FOUR) { // 4 cards draw
             System.out.println("Next player draws four cards.");
             game.nextPlayer();
             for (int i = 0; i < 4; i++) {
@@ -24,12 +24,12 @@ public class Wildcard extends Card implements Actionable {
 
     @Override
     public boolean canBePlayedOn(Card topCard, Color currentColor) {
-        return true;
+        return true; // always playable
     }
 
     @Override
     public String toString() {
-        return "[" + wildcard + "]";
+        return "[" + wildcard + "]"; //again tostring redefinition for output purposes
     }
 
 }

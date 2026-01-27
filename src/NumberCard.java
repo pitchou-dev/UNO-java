@@ -21,10 +21,11 @@ public class NumberCard extends Card {
 
     @Override
     public boolean canBePlayedOn(Card topCard, Color currentColor) {
-        // t9der tl3b ida nafs color
+        // if same color we can play
         if (this.getColor() == currentColor) {
             return true;
         }
+        // if same value we can play too
         if (topCard instanceof NumberCard topNumberCard) {
             return this.value == topNumberCard.getValue();
         }

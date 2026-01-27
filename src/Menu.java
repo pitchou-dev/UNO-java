@@ -21,13 +21,13 @@ public class Menu {
 
 
     public void start() {
-        if (game==null) {
+        if (game==null) { //en cas de premiere partie
             System.out.println("============== UNO GAME ==============");
             System.out.println("The rules are simple: be the first to get rid of all your cards!");
             System.out.println("1. Start Game");
             System.out.println("2. Exit");
         }
-        else {
+        else { //en cas de replay pour eviter de reafficher le meme menu
            System.out.println("1. Confirm replay");
            System.out.println("2. Exit");
         }
