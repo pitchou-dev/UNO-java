@@ -22,23 +22,21 @@ public class Game {
         this.deck.shuffle();
     }
 
-    public void resetGame() {
+    public void resetGame() { //used in case of replayed game to avoid creating a whole new one and keep the players and scores
             
-        discardPile.clear();
+        discardPile.clear(); // clear discard pile
 
         for (Player p : players) {
-            p.getHand().clear();   // vider les mains
+            p.getHand().clear();   // clears the players hands for those who didnt win
         }
 
         currentPlayerIndex = 0;
         direction = 1;
 
-        Deck newDeck = new Deck();
-        newDeck.shuffle();
+        deck.reset();
 
-        this.deck.refillDeckAndShuffle(discardPile);
-        
         distributeCards();
+
 
         do {
             topCard = deck.drawCard();
@@ -49,7 +47,7 @@ public class Game {
     }
 
 
-    public void winresults(){// celui ci affiche les victoires uniquement pour les humains
+    public void winresults(){// displays number of wins for each player while they still replay
         for (Player p : players){
     
             System.out.println("player "+p.getName()+"'s stats are:");
@@ -59,7 +57,7 @@ public class Game {
 
     public void nextPlayer() {
         currentPlayerIndex = (currentPlayerIndex + direction + numPlayers) % numPlayers;
-    }
+    } // mathematically it works
 
     public int getcurrentPlayerIndex() {
         return currentPlayerIndex;

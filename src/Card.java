@@ -11,5 +11,5 @@ abstract public class Card {
         return this.color;
     }
 
-    public abstract boolean canBePlayedOn(Card topCard, Color currentColor);
+    public abstract boolean canBePlayedOn(Card topCard, Color currentColor); //redefined for each typeofcard
 }
