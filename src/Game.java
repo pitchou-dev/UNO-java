@@ -1,7 +1,5 @@
 
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 public class Game {
 
     private final Deck deck;
@@ -25,33 +23,33 @@ public class Game {
     }
 
     public void resetGame() {
-        
-    discardPile.clear();
+            
+        discardPile.clear();
 
-    for (Player p : players) {
-        p.getHand().clear();   // vider les mains
+        for (Player p : players) {
+            p.getHand().clear();   // vider les mains
+        }
+
+        currentPlayerIndex = 0;
+        direction = 1;
+
+        Deck newDeck = new Deck();
+        newDeck.shuffle();
+
+        this.deck.refillDeckAndShuffle(discardPile);
+        
+        distributeCards();
+
+        do {
+            topCard = deck.drawCard();
+            discardPile.add(topCard);
+        } while (topCard instanceof Wildcard);
+
+        currentColor = topCard.getColor();
     }
 
-    currentPlayerIndex = 0;
-    direction = 1;
 
-    Deck newDeck = new Deck();
-    newDeck.shuffle();
-
-    this.deck.refillDeckAndShuffle(discardPile);
-    
-    distributeCards();
-
-    do {
-        topCard = deck.drawCard();
-        discardPile.add(topCard);
-    } while (topCard instanceof Wildcard);
-
-    currentColor = topCard.getColor();
-}
-
-
-      public void winresults(){// celui ci affiche les victoires uniquement pour les humains
+    public void winresults(){// celui ci affiche les victoires uniquement pour les humains
         for (Player p : players){
     
             System.out.println("player "+p.getName()+"'s stats are:");
@@ -110,55 +108,55 @@ public class Game {
         return deck;
     }
    
-   public void startGame(boolean botsChosen) {
+    public void startGame(boolean botsChosen) {
 
-    players.clear();
+        players.clear();
 
-    if (botsChosen) {
-        System.out.println("Setting up bot players...");
+        if (botsChosen) {
+            System.out.println("Setting up bot players...");
 
-        // numPlayers - 1 bots
-        for (int i = 0; i < numPlayers - 1; i++) {
-            players.add(new Botplayer());
-        }
+            // numPlayers - 1 bots
+            for (int i = 0; i < numPlayers - 1; i++) {
+                players.add(new Botplayer());
+            }
 
-        // 1 human player
-        System.out.println("Setting up the human player.");
-        System.out.print("Choose player name: ");
-        Player humanPlayer = new Player();
-        humanPlayer.setName();
-        players.add(humanPlayer);
-
-    } else {
-        // all human players
-        for (int i = 0; i < numPlayers; i++) {
-            System.out.println("Setting up Player " + (i + 1)+ "...");
+            // 1 human player
+            System.out.println("Setting up the human player.");
             System.out.print("Choose player name: ");
-            Player player = new Player();
-            player.setName();
-            players.add(player);
+            Player humanPlayer = new Player();
+            humanPlayer.setName();
+            players.add(humanPlayer);
+
+        } else {
+            // all human players
+            for (int i = 0; i < numPlayers; i++) {
+                System.out.println("Setting up Player " + (i + 1)+ "...");
+                System.out.print("Choose player name: ");
+                Player player = new Player();
+                player.setName();
+                players.add(player);
+            }
+        }
+
+        distributeCards();
+
+        do {
+            topCard = deck.drawCard();
+            discardPile.add(topCard);
+        } while (topCard instanceof Wildcard);
+
+        if (topCard instanceof Wildcard) {
+            currentColor = players.get(currentPlayerIndex).Chosencolor(this);
+        } else {
+            currentColor = topCard.getColor();
         }
     }
-
-    distributeCards();
-
-    do {
-        topCard = deck.drawCard();
-        discardPile.add(topCard);
-    } while (topCard instanceof Wildcard);
-
-    if (topCard instanceof Wildcard) {
-        currentColor = players.get(currentPlayerIndex).Chosencolor(this);
-    } else {
-        currentColor = topCard.getColor();
-    }
-}
 
     private Card playerChoose(Player currentPlayer, Card topcard, Color currentColor) {
         Card playedCard = currentPlayer.playCard();
         if (!playedCard.canBePlayedOn(topcard, currentColor)) {
             if (!(currentPlayer instanceof Botplayer)) {
-            System.out.println("You can't play with that card.");
+                System.out.println("You can't play with that card.");
             }
             // give his card back:
             currentPlayer.giveCardBack(playedCard);
@@ -171,7 +169,7 @@ public class Game {
     }
 
     public void play() {
-    boolean gameOver = false;
+        boolean gameOver = false;
 
         while (!gameOver) {
             Player currentPlayer = players.get(currentPlayerIndex);

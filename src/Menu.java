@@ -33,10 +33,10 @@ public class Menu {
         switch (choice) {
             case 1:
                 if (game == null) {
-                setupGame();   // première fois seulement
-            }
-            game.play();       
-            game.resetGame(); // réinitialise le jeu pour une nouvelle partie en replayant
+                    setupGame();   // première fois seulement
+                }
+                game.play();       
+                game.resetGame(); // réinitialise le jeu pour une nouvelle partie en replayant
             break;
             case 2:
                 System.out.println("Exiting the game. Goodbye!");
