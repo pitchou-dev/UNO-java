@@ -55,6 +55,6 @@ public class Actioncard extends Card implements Actionable {
 
     @Override
     public String toString() { //to string redefinition for input purposes
-        return "[" + getaction() + "," + getColor() + "]";
+        return "[" + action + "," + getColor() + "]";
     }
 }
