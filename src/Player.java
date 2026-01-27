@@ -7,6 +7,7 @@ public class Player {
     private int gameswon;
     private String name;
     private final ArrayList<Card> hand = new ArrayList<>();
+    private int score;
 
 
     public void setName() { //set player same 
@@ -109,6 +110,13 @@ public class Player {
     }
     public void setgameswon(int gameswon){
         this.gameswon = gameswon;
+    }
+    public int getScore() {
+        return score;
+    }
+    public int setScore(int score) {
+        this.score = score;
+        return score;
     }
 }
 

@@ -47,13 +47,7 @@ public class Game {
     }
 
 
-    public void winresults(){// displays number of wins for each player while they still replay
-        for (Player p : players){
-    
-            System.out.println("player "+p.getName()+"'s stats are:");
-            System.out.println("Wins: "+p.getgameswon());
-        }
-    }
+
 
     public void nextPlayer() {
         currentPlayerIndex = (currentPlayerIndex + direction + numPlayers) % numPlayers;
@@ -82,7 +76,15 @@ public class Game {
     public Color getcurrentColor() {
         return currentColor;
     }
-
+ public void winresults(){
+        // displays number of wins for each player while they still replay
+        for (Player p : players){
+    
+            System.out.println("player "+p.getName()+"'s stats are:");
+            System.out.println("Wins: "+p.getgameswon());
+            System.out.println("Score: "+p.getScore());
+        }
+    }
     private void discardtodraw(Deck deck) {
         discardPile.removeLast(); // remove the top card from the discard pile
         deck.refillDeckAndShuffle(discardPile);
@@ -149,7 +151,8 @@ public class Game {
             currentColor = topCard.getColor();
         }
     }
-
+     
+      
     private Card playerChoose(Player currentPlayer, Card topcard, Color currentColor) {
         Card playedCard = currentPlayer.playCard();
         if (!playedCard.canBePlayedOn(topcard, currentColor)) {
@@ -220,7 +223,8 @@ public class Game {
                 if (currentPlayer.getHand().isEmpty()) {
                     System.out.println("Congratulation! " + currentPlayer.getName() + ", won !");
                     currentPlayer.setgameswon(currentPlayer.getgameswon()+1);
-                    winresults();
+         
+                   
                     System.out.println("Game Over!.");
 
                     gameOver = true;
@@ -232,7 +236,31 @@ public class Game {
 
             if (!gameOver) {
                 nextPlayer();
+            }else{
+                         for(Player p : players){
+                if(currentPlayerIndex != players.indexOf(p)){
+                    int totalScore =0;
+                    for(Card c : p.getHand()){
+                        if(c instanceof NumberCard){
+                            totalScore += 1;
+                        }
+                        else if(c instanceof Actioncard){
+                            totalScore += 2;
+                        }
+                        else if(c instanceof Wildcard){
+                            totalScore += 3;
+                        }
+                    }
+                    currentPlayer.setScore(currentPlayer.getScore()+totalScore);
+                    System.out.println(currentPlayer.getName()+" earned "+totalScore+" points from "+p.getName()+"'s remaining cards.");
+                }
+                
             }
+             winresults(); 
         }
-    }
+            //
+   
+        }
+      
+}
 }

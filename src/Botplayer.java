@@ -5,6 +5,7 @@ public class Botplayer extends Player {
     private static int numberOfBots = 0;
     private final String botName;
     private static final Random RAND = new Random();
+    private int score;
 
     public Botplayer() {
         numberOfBots++;
@@ -47,6 +48,13 @@ public class Botplayer extends Player {
             CurrentColor = Color.values()[pick]; //changes game color to it
         }
         return CurrentColor; //handles the bot choice in the case of a color choice presented to it
+    }
+    public int getScore() {
+        return score;
+    }
+    public int setScore(int score) {
+        this.score = score;
+        return score;
     }
 }
 /* 
