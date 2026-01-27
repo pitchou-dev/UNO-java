@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Player {
@@ -42,15 +43,20 @@ public class Player {
     }
 
     public Card playCard() {
-        int num;
-        do {
-            System.out.println("Choose your card: ");
-            Scanner scan = new Scanner(System.in);
-            num = scan.nextInt();
-        } while (num <= 0 || num > hand.size());
-
-
-        return hand.remove(num - 1);
+        System.out.println("Choose your card: ");
+        Scanner scan = new Scanner(System.in);
+        try {
+            int num = scan.nextInt();
+            if (num <= 0 || num > hand.size()) {
+                System.out.println("Invalid choice. Try again.");
+                return playCard();
+            }
+            return hand.remove(num - 1);
+        } catch (InputMismatchException e) {
+            scan.nextLine(); // clear the buffer
+            System.out.println("Please enter a valid number.");
+            return playCard();
+        }
     }
 
     public boolean CanPlayerPlay(Card topCard, Color currentColor) {
