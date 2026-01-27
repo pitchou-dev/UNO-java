@@ -19,10 +19,10 @@ public class Menu {
 
     public void start() {
         if (game==null) {
-        System.out.println("============== UNO GAME ==============");
-        System.out.println("The rules are simple: be the first to get rid of all your cards!");
-        System.out.println("1. Start Game");
-        System.out.println("2. Exit");
+            System.out.println("============== UNO GAME ==============");
+            System.out.println("The rules are simple: be the first to get rid of all your cards!");
+            System.out.println("1. Start Game");
+            System.out.println("2. Exit");
         }
         else {
            System.out.println("1. Confirm replay");
