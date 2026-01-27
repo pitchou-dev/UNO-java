@@ -8,11 +8,11 @@ public class Player {
     private String name;
     private final ArrayList<Card> hand = new ArrayList<>();
     private int score;
+    private final Scanner scanner = new Scanner(System.in);
 
 
     public void setName() { //set player same 
-        Scanner scan = new Scanner(System.in);
-        this.name = scan.next();
+        this.name = scanner.next();
     }
 
     public String getName() {
@@ -45,16 +45,15 @@ public class Player {
 
     public Card playCard() {
         System.out.println("Choose your card: ");
-        Scanner scan = new Scanner(System.in);
         try {
-            int num = scan.nextInt();
+            int num = scanner.nextInt();
             if (num <= 0 || num > hand.size()) {
                 System.out.println("Invalid choice. Try again.");
                 return playCard();
             }
             return hand.remove(num - 1);
         } catch (InputMismatchException e) {
-            scan.nextLine(); // clear the buffer
+            scanner.nextLine(); // clear the buffer
             System.out.println("Please enter a valid number.");
             return playCard();
         }
@@ -81,12 +80,9 @@ public class Player {
     }
 
       public Color Chosencolor(Game game){
-        if( game.getcurrentColor()!=Color.BLACK){
-            return game.getcurrentColor();
-        }
+
         System.out.println("Choose a color: 1:Red 2:Yellow 3:Blue 4:Green");
-        Scanner scan = new Scanner(System.in);
-        int Choice = scan.nextInt();
+        int Choice = scanner.nextInt();
         Color newcolor;
         newcolor = Color.BLACK;
 
@@ -99,7 +95,7 @@ public class Player {
             default -> {
                 System.out.println("Invalid Choice, Try again.");
 
-                Chosencolor(game);
+                return Chosencolor(game);
             }
 
         }

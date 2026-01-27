@@ -202,7 +202,7 @@ public class Game {
                 topCard = playedCard;
                 discardPile.add(topCard);
                 if (topCard instanceof Wildcard) {
-                    currentColor = players.get(currentPlayerIndex).Chosencolor(this);
+                    currentColor = currentPlayer.Chosencolor(this);
                 } 
                 else {
                     currentColor = topCard.getColor();
