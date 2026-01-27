@@ -1,4 +1,5 @@
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
@@ -9,11 +10,13 @@ public class Menu {
 
 
     private int getUserChoice() {
-        while (!scanner.hasNextInt()) {
-            scanner.next(); // discard invalid input
-            System.out.println("Please enter a number.");
+        try {
+            return scanner.nextInt();
+        } catch (InputMismatchException e) {
+            scanner.nextLine(); // clear
+            System.out.println("Please enter a valid number.");
+            return getUserChoice();
         }
-        return scanner.nextInt();
     }
 
 
