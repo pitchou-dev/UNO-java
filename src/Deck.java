@@ -46,11 +46,10 @@ public class Deck {
                 this.cards.addLast(drawTwoCard);
             }
         }
+        Collections.shuffle(this.cards);//this randomly shuffles all the cards in a deck
     }
 
-    public void shuffle() {
-        Collections.shuffle(this.cards); //this randomly shuffles all the cards in a deck
-    }
+
 
     ;
 
@@ -64,11 +63,10 @@ public class Deck {
 
     public void refillDeckAndShuffle(List<Card> discardedCards) {
         this.cards.addAll(discardedCards); //refills deck with all the played previously cards
-        this.shuffle(); // shuffles it again
+        Collections.shuffle(this.cards); //shuffles the deck again
     }
     public void reset(){  //for the game restart resets the deck fully
         cards.clear();
         initDeck();
-        shuffle();
     }
 }
