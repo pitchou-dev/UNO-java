@@ -12,10 +12,8 @@ public class Botplayer extends Player {
     }
 
     private int randomIndex(int size) {
-        if (size <= 0) {
-            throw new IllegalStateException("Bot has no cards to play");
-        }
-        return RAND.nextInt(size);
+
+        return RAND.nextInt(size); //initiating the random index choice in the hand of the bot
     }
 
     @Override
@@ -25,9 +23,8 @@ public class Botplayer extends Player {
 
     @Override
     public Card playCard() {
-        int index = randomIndex(getHandSize());
-        Card card = getHand().get(index);
-        return getHand().remove(index);
+        int index = randomIndex(getHandSize()); //chooses a random index between 0 and handsize
+        return getHand().remove(index); //card to be played and removed
     }
 
     @Override

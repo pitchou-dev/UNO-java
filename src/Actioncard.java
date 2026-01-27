@@ -1,7 +1,7 @@
 
 public class Actioncard extends Card implements Actionable {
 
-    private final Actiontype action;
+    private final Actiontype action; 
     
 
 
@@ -16,7 +16,7 @@ public class Actioncard extends Card implements Actionable {
     }
 
     @Override
-    public void Applyeffect(Game game) {
+    public void Applyeffect(Game game) { //for each action type its corresponding effect
         switch (action) {
             case SKIP:
                 System.out.println("Next player's turn is skipped");
@@ -36,7 +36,7 @@ public class Actioncard extends Card implements Actionable {
                 game.nextPlayer();
                 game.getPlayer(game.getcurrentPlayerIndex()).drawCard(game.getDeck());
                 game.getPlayer(game.getcurrentPlayerIndex()).drawCard(game.getDeck());
-
+                // On passe au prochain joueur et force deux fois la pioche
                 break;
             default:
         }
@@ -44,18 +44,18 @@ public class Actioncard extends Card implements Actionable {
 
     @Override
     public boolean canBePlayedOn(Card topCard, Color currentColor) {
-        // t9der tl3b ida nafs color
+        // we check if it is the same color to allow the card to be played
         if (this.getColor() == currentColor) {
-            return true;
+            return true; //same color as the current game color
         }
         if (topCard instanceof Actioncard topActionCard) {
-            return this.action == topActionCard.action;
+            return this.action == topActionCard.action; //not same color but same action as topcard
         }
-        return false;
+        return false; //none of the above so not playable on topcard
     }
 
     @Override
-    public String toString() {
+    public String toString() { //to string redefinition for input purposes
         return "[" + getaction() + "," + getColor() + "]";
     }
 }
