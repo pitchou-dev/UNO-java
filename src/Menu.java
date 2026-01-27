@@ -24,6 +24,9 @@ public class Menu {
         if (game==null) { //en cas de premiere partie
             System.out.println("============== UNO GAME ==============");
             System.out.println("The rules are simple: be the first to get rid of all your cards!");
+            System.out.println("Choose to play with bots or not, select number of players, and enjoy!");
+            System.out.println("The round winner earns points based on opponents remaining cards.");
+            System.out.println("1 point per number card, 2 points for action cards, and 3 points for wild cards.");
             System.out.println("1. Start Game");
             System.out.println("2. Exit");
         }
