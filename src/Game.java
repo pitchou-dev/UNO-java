@@ -13,13 +13,9 @@ public class Game {
     
     public Game(int numPlayers) {
         this.players = new java.util.ArrayList<>(numPlayers);
-        for (int i = 0; i < numPlayers; i++) {
-            players.add(null); // Initialiser avec des valeurs nulles
-        }
         this.numPlayers = numPlayers;
         this.discardPile = new java.util.ArrayList<>();
         this.deck = new Deck();
-        this.deck.shuffle();
     }
 
     public void resetGame() { //used in case of replayed game to avoid creating a whole new one and keep the players and scores
@@ -110,7 +106,6 @@ public class Game {
    
     public void startGame(boolean botsChosen) {
 
-        players.clear();
 
         if (botsChosen) {
             System.out.println("Setting up bot players...");
@@ -145,11 +140,8 @@ public class Game {
             discardPile.add(topCard);
         } while (topCard instanceof Wildcard);
 
-        if (topCard instanceof Wildcard) {
-            currentColor = players.get(currentPlayerIndex).Chosencolor(this);
-        } else {
-            currentColor = topCard.getColor();
-        }
+        currentColor = topCard.getColor();
+        
     }
      
       
@@ -209,7 +201,12 @@ public class Game {
             if (playedCard != null) {
                 topCard = playedCard;
                 discardPile.add(topCard);
-                currentColor = topCard.getColor(); // important pour les wildcard
+                if (topCard instanceof Wildcard) {
+                    currentColor = players.get(currentPlayerIndex).Chosencolor(this);
+                } 
+                else {
+                    currentColor = topCard.getColor();
+                }
 
                 // si la carte doit affecter le jeu on applique son effet:
                 if (playedCard instanceof Actionable actionable) {
@@ -236,26 +233,27 @@ public class Game {
 
             if (!gameOver) {
                 nextPlayer();
-            }else{
-                         for(Player p : players){
-                if(currentPlayerIndex != players.indexOf(p)){
-                    int totalScore =0;
-                    for(Card c : p.getHand()){
-                        if(c instanceof NumberCard){
-                            totalScore += 1;
-                        }
-                        else if(c instanceof Actioncard){
-                            totalScore += 2;
-                        }
-                        else if(c instanceof Wildcard){
-                            totalScore += 3;
-                        }
-                    }
-                    currentPlayer.setScore(currentPlayer.getScore()+totalScore);
-                    System.out.println(currentPlayer.getName()+" earned "+totalScore+" points from "+p.getName()+"'s remaining cards.");
-                }
-                
             }
+            else{
+                for(Player p : players){
+                    if(currentPlayerIndex != players.indexOf(p)){
+                        int totalScore =0;
+                        for(Card c : p.getHand()){
+                            if(c instanceof NumberCard){
+                                totalScore += 1;
+                            }
+                            else if(c instanceof Actioncard){
+                                totalScore += 2;
+                            }
+                            else if(c instanceof Wildcard){
+                                totalScore += 3;
+                            }
+                        }
+                        currentPlayer.setScore(currentPlayer.getScore()+totalScore);
+                        System.out.println(currentPlayer.getName()+" earned "+totalScore+" points from "+p.getName()+"'s remaining cards.");
+                    }
+                
+                }
              winresults(); 
         }
             //
