@@ -75,7 +75,7 @@ public class Player {
 
     public void sayUno() {
         if (hand.size() == 1) {
-            System.out.println(name + " says UNO!");
+            System.out.println(getName() + " says UNO!");
             System.out.println("Other players should be careful!!");
         }
     }

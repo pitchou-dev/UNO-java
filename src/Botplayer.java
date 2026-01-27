@@ -2,9 +2,10 @@ import java.util.Random;
 
 public class Botplayer extends Player {
 
-    private static int numberOfBots = 0;
+    private static int numberOfBots  = 0;
     private final String botName;
     private static final Random RAND = new Random();
+    public static final Random RANDCOLOR = new Random();
 
     public Botplayer() {
         numberOfBots++;
@@ -28,17 +29,11 @@ public class Botplayer extends Player {
     }
 
     @Override
-    public void sayUno() {
-         if (getHandSize() == 1) {
-            System.out.println(botName + " says UNO!"); // was saying null because of privacy issues so we overrid it
-            System.out.println("Other players should be careful!!");
-        }
-    }
-    @Override
     public void displayHand() {
         // Bots do not display their hand
     }
-    public static final Random RANDCOLOR = new Random();
+
+    
     @Override
     public Color Chosencolor(Game game) {
         Color CurrentColor = Color.BLACK;
@@ -61,5 +56,5 @@ public class Botplayer extends Player {
             ;
         }
     }, 1000);
-    */ 
+*/ 
    // timer prototype wanted to simulate bot thinking behaviour but faced some issues ,commented for trying value
