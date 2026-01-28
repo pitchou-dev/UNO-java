@@ -57,4 +57,4 @@ public class Botplayer extends Player {
         }
     }, 1000);
 */ 
-   // timer prototype wanted to simulate bot thinking behaviour but faced some issues ,commented for trying value
+   // timer prototype wanted to simulate bot thinking behaviour but faced some issues ,commented for transparency
