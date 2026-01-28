@@ -49,10 +49,6 @@ public class Deck {
         Collections.shuffle(this.cards);//this randomly shuffles all the cards in a deck
     }
 
-
-
-    ;
-
     public Card drawCard() {
         return this.cards.removeFirst(); 
     }
