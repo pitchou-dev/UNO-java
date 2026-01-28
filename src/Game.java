@@ -18,33 +18,6 @@ public class Game {
         this.deck = new Deck();
     }
 
-    public void resetGame() { //used in case of replayed game to avoid creating a whole new one and keep the players and scores
-            
-        discardPile.clear(); // clear discard pile
-
-        for (Player p : players) {
-            p.getHand().clear();   // clears the players hands for those who didnt win
-        }
-
-        currentPlayerIndex = 0;
-        direction = 1;
-
-        deck.reset();
-
-        distributeCards();
-
-
-        do {
-            topCard = deck.drawCard();
-            discardPile.add(topCard);
-        } while (topCard instanceof Wildcard);
-
-        currentColor = topCard.getColor();
-    }
-
-
-
-
     public void nextPlayer() {
         currentPlayerIndex = (currentPlayerIndex + direction + numPlayers) % numPlayers;
     } // mathematically it works
@@ -100,6 +73,16 @@ public class Game {
         this.currentColor = color;
     }
 
+    private int calculateHandScore(Player p) {
+    int score = 0;
+    for (Card c : p.getHand()) {
+        if (c instanceof NumberCard) score += 1;
+        else if (c instanceof Actioncard) score += 2;
+        else if (c instanceof Wildcard) score += 3;
+    }
+    return score;
+    }
+
     public Deck getDeck() {
         return deck;
     }
@@ -143,8 +126,33 @@ public class Game {
         currentColor = topCard.getColor();
         
     }
-     
-      
+
+    public void resetGame() { //used in case of replayed game to avoid creating a whole new one and keep the players and scores
+            
+        discardPile.clear(); // clear discard pile
+
+        for (Player p : players) {
+            p.getHand().clear();   // clears the players hands for those who didnt win
+        }
+
+        currentPlayerIndex = 0;
+        direction = 1;
+
+        deck.reset();
+
+        distributeCards();
+
+
+        do {
+            topCard = deck.drawCard();
+            discardPile.add(topCard);
+        } while (topCard instanceof Wildcard);
+
+        currentColor = topCard.getColor();
+    }
+    
+
+    
     private Card playerChoose(Player currentPlayer, Card topcard, Color currentColor) {
         Card playedCard = currentPlayer.playCard();
         if (!playedCard.canBePlayedOn(topcard, currentColor)) {
@@ -236,24 +244,12 @@ public class Game {
             }
             else{
                 Player winner = currentPlayer;
-                for(Player p : players){
-                    if(p != winner){
-                        int totalScore =0;
-                        for(Card c : p.getHand()){
-                            if(c instanceof NumberCard){
-                                totalScore += 1;
-                            }
-                            else if(c instanceof Actioncard){
-                                totalScore += 2;
-                            }
-                            else if(c instanceof Wildcard){
-                                totalScore += 3;
-                            }
-                        }
-                        winner.setScore(winner.getScore()+totalScore);
-                        System.out.println(winner.getName()+" earned "+totalScore+" points from "+p.getName()+"'s remaining cards.");
+                for (Player p : players) {
+                    if (p != winner) {
+                        int totalScore = calculateHandScore(p);
+                        winner.setScore(winner.getScore() + totalScore);
+                        System.out.println(winner.getName() + " earned " + totalScore +" points from " + p.getName() + "'s remaining cards.");
                     }
-                
                 }
              winresults(); 
         }
