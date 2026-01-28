@@ -84,7 +84,6 @@ public class Player {
         System.out.println("Choose a color: 1:Red 2:Yellow 3:Blue 4:Green");
         int Choice = scanner.nextInt();
         Color newcolor;
-        newcolor = Color.BLACK;
 
         switch (Choice) { //converted switch to rule switch thus why the syntax seems different
             case 1 -> newcolor = Color.RED;
