@@ -59,6 +59,7 @@ public class Game {
         deck.refillDeckAndShuffle(discardPile);
         discardPile.clear();
         discardPile.add(topCard); // add the top card to the discard pile again
+        System.out.println("Deck was empty, reshuffling discard pile into deck.");
     }
 
     private void distributeCards() {
