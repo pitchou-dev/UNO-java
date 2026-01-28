@@ -11,10 +11,6 @@ public class Actioncard extends Card implements Actionable {
 
     }
 
-    public Actiontype getaction() {
-        return this.action;
-    }
-
     @Override
     public void Applyeffect(Game game) { //for each action type its corresponding effect
         switch (action) {
