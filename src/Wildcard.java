@@ -12,7 +12,7 @@ public class Wildcard extends Card implements Actionable {
 
     @Override
     public void Applyeffect(Game game) { //wild cards effects
-       
+       //for change color it is handled in the game class when played
         if (wildcard == Wildtype.DRAW_FOUR) { // 4 cards draw
             System.out.println("Next player draws four cards.");
             game.nextPlayer();
