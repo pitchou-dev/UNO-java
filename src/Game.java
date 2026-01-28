@@ -235,8 +235,9 @@ public class Game {
                 nextPlayer();
             }
             else{
+                Player winner = currentPlayer;
                 for(Player p : players){
-                    if(currentPlayerIndex != players.indexOf(p)){
+                    if(p != winner){
                         int totalScore =0;
                         for(Card c : p.getHand()){
                             if(c instanceof NumberCard){
@@ -249,8 +250,8 @@ public class Game {
                                 totalScore += 3;
                             }
                         }
-                        currentPlayer.setScore(currentPlayer.getScore()+totalScore);
-                        System.out.println(currentPlayer.getName()+" earned "+totalScore+" points from "+p.getName()+"'s remaining cards.");
+                        winner.setScore(winner.getScore()+totalScore);
+                        System.out.println(winner.getName()+" earned "+totalScore+" points from "+p.getName()+"'s remaining cards.");
                     }
                 
                 }
